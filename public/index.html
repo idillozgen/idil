@@ -1,0 +1,2609 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İdilişko — KKTC Kadın İkinci El Moda & Güvenli Alışveriş</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              200: '#fecdd3',
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            },
+            cypSea: {
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+            }
+          },
+          zIndex: {
+            '60': '60',
+            '70': '70',
+            '80': '80',
+            '90': '90',
+            '100': '100',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #f43f5e; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col overflow-x-hidden">
+
+  <!-- ================= TOP NOTICE BAR ================= -->
+  <div class="bg-gradient-to-r from-brand-600 via-rose-500 to-amber-500 text-white text-xs py-1.5 px-4 font-semibold">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="bg-white/20 px-2 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider">KKTC'ye Özel</span>
+        <span>İdilişko — Kıbrıs'ın Kızlarına Özel Güvenli İkinci El Dolap & Güvenli Havuz Koruması!</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-[11px]">
+        <span class="flex items-center gap-1">🔒 İdilişko Havuz Hesap</span>
+        <span class="flex items-center gap-1">📍 Güvenli Buluşma Noktaları</span>
+        <span class="flex items-center gap-1">🎓 DAÜ • YDÜ • GAÜ • ODTÜ Kampüs Dolapları</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN HEADER (DOLAP STYLE) ================= -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Logo: idilişko -->
+      <div class="flex items-center gap-3">
+        <a href="#" onclick="resetAllFilters()" class="flex items-center gap-2.5 shrink-0 group">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-amber-400 flex items-center justify-center text-white font-black text-xl shadow-md shadow-brand-500/25 group-hover:scale-105 transition transform">
+            İ
+          </div>
+          <div>
+            <div class="text-2xl font-black tracking-tight text-slate-900 leading-none">
+              idil<span class="text-brand-600">işko</span>
+            </div>
+            <span class="text-[10px] font-bold text-slate-400 tracking-wider uppercase block mt-0.5">KKTC Kadın Moda Pazarı</span>
+          </div>
+        </a>
+        <span id="supabaseStatusBadge" class="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Supabase Bulut Aktif ⚡</span>
+        </span>
+      </div>
+
+      <!-- Large Center Search Bar -->
+      <div class="flex-1 max-w-2xl relative hidden md:block">
+        <div class="relative flex items-center">
+          <svg class="w-5 h-5 text-slate-400 absolute left-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input type="text" id="desktopSearchInput" oninput="onSearch(this.value)" placeholder="İdilişko'da ara... (Örn: Zara elbise, DAÜ mezuniyet, Mango çanta)" class="w-full bg-slate-100 hover:bg-slate-50 focus:bg-white text-xs font-medium text-slate-800 placeholder-slate-400 rounded-full pl-11 pr-36 py-3 border border-transparent focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 focus:outline-none transition">
+          
+          <!-- Quick City Filter Pill in Search -->
+          <div class="absolute right-2 flex items-center">
+            <select id="headerCitySelect" onchange="onCityFilterChange(this.value)" class="text-xs font-bold bg-white text-brand-700 border border-slate-200 rounded-full px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-400 cursor-pointer shadow-xs">
+              <option value="all">📍 Tüm Ada (KKTC)</option>
+              <option value="Lefkoşa">📍 Lefkoşa</option>
+              <option value="Girne">📍 Girne</option>
+              <option value="Mağusa">📍 Gazimağusa</option>
+              <option value="İskele">📍 İskele</option>
+              <option value="Güzelyurt">📍 Güzelyurt</option>
+              <option value="Lefke">📍 Lefke</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Action Buttons -->
+      <div class="flex items-center gap-3 shrink-0">
+        <!-- Messages Button -->
+        <button onclick="toggleMessagesDropdown()" class="relative p-2.5 rounded-xl text-slate-600 hover:bg-slate-100 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-brand-500 rounded-full border-2 border-white"></span>
+        </button>
+
+        <!-- Dynamic User Auth & Profile Container -->
+        <div id="authHeaderArea" class="flex items-center gap-2">
+          <button onclick="openAuthModal('login')" class="text-xs font-black text-slate-700 hover:text-brand-600 px-3 py-2 rounded-full hover:bg-slate-100 transition">
+            Giriş Yap
+          </button>
+          <button onclick="openAuthModal('register')" class="text-xs font-black text-brand-600 bg-rose-50 hover:bg-rose-100 border border-rose-200 px-3.5 py-2 rounded-full transition shadow-xs flex items-center gap-1">
+            <span>Kayıt Ol</span>
+            <span>🌸</span>
+          </button>
+        </div>
+
+        <!-- Sell Button (Dolap Style Call To Action) -->
+        <button onclick="openAddItemModal()" class="flex items-center gap-1.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-extrabold px-4 py-2.5 rounded-full shadow-md shadow-brand-500/25 hover:shadow-lg transition transform active:scale-95">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+          <span>Satış Yap</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ================= SUB CATEGORY NAVIGATION ================= -->
+    <nav class="border-t border-slate-100 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center gap-2 overflow-x-auto text-xs font-semibold py-2.5 text-slate-600">
+        <button onclick="setCategoryFilter('all')" class="cat-pill active px-3.5 py-1.5 rounded-full bg-slate-900 text-white shrink-0 transition">Tüm Ürünler</button>
+        <button onclick="setCategoryFilter('Mezuniyet')" class="cat-pill px-3.5 py-1.5 rounded-full hover:bg-slate-100 shrink-0 transition text-brand-600">✨ Mezuniyet & Balo Elbiseleri</button>
+        <button onclick="setCategoryFilter('Giyim')" class="cat-pill px-3.5 py-1.5 rounded-full hover:bg-slate-100 shrink-0 transition">👗 Günlük Giyim & Takım</button>
+        <button onclick="setCategoryFilter('Çanta')" class="cat-pill px-3.5 py-1.5 rounded-full hover:bg-slate-100 shrink-0 transition">👜 Çanta & Cüzdan</button>
+        <button onclick="setCategoryFilter('Ayakkabı')" class="cat-pill px-3.5 py-1.5 rounded-full hover:bg-slate-100 shrink-0 transition">👠 Ayakkabı & Sneaker</button>
+        <button onclick="setCategoryFilter('Kozmetik')" class="cat-pill px-3.5 py-1.5 rounded-full hover:bg-slate-100 shrink-0 transition">💄 Orijinal Kozmetik</button>
+        <button onclick="setCategoryFilter('Aksesuar')" class="cat-pill px-3.5 py-1.5 rounded-full hover:bg-slate-100 shrink-0 transition">💍 Takı & Aksesuar</button>
+        <span class="h-4 w-[1px] bg-slate-200 mx-1 shrink-0"></span>
+        <button onclick="filterByTag('DAÜ')" class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 hover:bg-blue-100 shrink-0 transition">🎓 DAÜ Dolapları</button>
+        <button onclick="filterByTag('YDÜ')" class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 shrink-0 transition">🎓 YDÜ Dolapları</button>
+        <button onclick="filterByTag('Girne')" class="px-3 py-1 rounded-full bg-amber-50 text-amber-800 hover:bg-amber-100 shrink-0 transition">🌊 Girne Butikleri</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= HERO CAROUSEL / HIGHLIGHTS ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-5 pb-2 w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+      <!-- Big Banner 1 -->
+      <div class="md:col-span-2 rounded-3xl bg-gradient-to-r from-brand-600 via-rose-500 to-amber-500 p-6 md:p-8 text-white relative overflow-hidden shadow-sm flex flex-col justify-between min-h-[180px]">
+        <div class="relative z-10 max-w-lg">
+          <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-xs font-black tracking-wider uppercase mb-2">İdilişko Kızlar Topluluğu</span>
+          <h1 class="text-xl sm:text-2xl font-black leading-tight">Dolabında Giymediğin Kıyafetleri Nakite Çevir, Kıbrıs'taki Kızlarla Paylaş!</h1>
+          <p class="text-xs sm:text-sm text-rose-100 mt-2 font-medium">Dereboyu, Girne Liman, City Mall ve kampüslerde güvenli elden teslim noktaları veya Kargom Kıbrıs ile sabit fiyatlı kargo.</p>
+        </div>
+        <div class="relative z-10 mt-4 flex items-center gap-3">
+          <button onclick="openAddItemModal()" class="px-5 py-2.5 bg-white text-brand-600 hover:bg-rose-50 font-black text-xs rounded-full shadow transition">Hemen Dolabını Aç</button>
+          <span class="text-xs font-semibold text-white/90">🔒 Ödemeler teslim alana kadar İdilişko Havuzunda güvende</span>
+        </div>
+        <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+      </div>
+
+      <!-- Feature Card 2 -->
+      <div class="rounded-3xl bg-gradient-to-br from-cypSea-500 to-emerald-600 p-6 text-white flex flex-col justify-between shadow-sm">
+        <div>
+          <span class="inline-block px-2.5 py-1 rounded-full bg-white/20 text-[11px] font-bold uppercase tracking-wider mb-2">✨ Kampüs & Mezuniyet</span>
+          <h2 class="text-lg font-black leading-snug">Balo & Mezuniyet Elbiseleri</h2>
+          <p class="text-xs text-emerald-100 mt-1.5">Sadece 1 gece giyilmiş abiyeleri yarı fiyatına al veya kendi elbiseni kirala/sat.</p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-white/20 flex items-center justify-between">
+          <span class="text-xs font-bold">140+ Abiye Yayında</span>
+          <button onclick="setCategoryFilter('Mezuniyet')" class="text-xs font-extrabold bg-white text-cypSea-600 px-3 py-1.5 rounded-full hover:bg-emerald-50 transition">İncele →</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= POPULAR STORIES / HUBS ================= -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 py-4 w-full">
+    <div class="flex items-center justify-between mb-3">
+      <h3 class="text-sm font-extrabold text-slate-800 tracking-tight flex items-center gap-2">
+        <span>📍 KKTC Şehir & Kampüs Dolapları</span>
+      </h3>
+      <span class="text-xs font-semibold text-brand-600 cursor-pointer" onclick="resetAllFilters()">Filtreleri Sıfırla</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+      
+      <div onclick="onCityFilterChange('Lefkoşa')" class="bg-white p-3 rounded-2xl border border-slate-200 hover:border-brand-400 hover:shadow-md transition cursor-pointer flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-rose-50 text-brand-600 flex items-center justify-center font-bold text-base shrink-0">🏛️</span>
+        <div>
+          <div class="text-xs font-bold text-slate-900">Lefkoşa</div>
+          <span class="text-[10px] text-slate-400">Dereboyu • YDÜ</span>
+        </div>
+      </div>
+
+      <div onclick="onCityFilterChange('Girne')" class="bg-white p-3 rounded-2xl border border-slate-200 hover:border-brand-400 hover:shadow-md transition cursor-pointer flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-base shrink-0">⛵</span>
+        <div>
+          <div class="text-xs font-bold text-slate-900">Girne</div>
+          <span class="text-[10px] text-slate-400">Liman • GAÜ</span>
+        </div>
+      </div>
+
+      <div onclick="onCityFilterChange('Mağusa')" class="bg-white p-3 rounded-2xl border border-slate-200 hover:border-brand-400 hover:shadow-md transition cursor-pointer flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-base shrink-0">🏰</span>
+        <div>
+          <div class="text-xs font-bold text-slate-900">Gazimağusa</div>
+          <span class="text-[10px] text-slate-400">DAÜ Kampüs • City Mall</span>
+        </div>
+      </div>
+
+      <div onclick="onCityFilterChange('İskele')" class="bg-white p-3 rounded-2xl border border-slate-200 hover:border-brand-400 hover:shadow-md transition cursor-pointer flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center font-bold text-base shrink-0">🌴</span>
+        <div>
+          <div class="text-xs font-bold text-slate-900">İskele</div>
+          <span class="text-[10px] text-slate-400">Long Beach</span>
+        </div>
+      </div>
+
+      <div onclick="onCityFilterChange('Güzelyurt')" class="bg-white p-3 rounded-2xl border border-slate-200 hover:border-brand-400 hover:shadow-md transition cursor-pointer flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center font-bold text-base shrink-0">🍊</span>
+        <div>
+          <div class="text-xs font-bold text-slate-900">Güzelyurt</div>
+          <span class="text-[10px] text-slate-400">ODTÜ KKK</span>
+        </div>
+      </div>
+
+      <div onclick="onCityFilterChange('Lefke')" class="bg-white p-3 rounded-2xl border border-slate-200 hover:border-brand-400 hover:shadow-md transition cursor-pointer flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-base shrink-0">🎓</span>
+        <div>
+          <div class="text-xs font-bold text-slate-900">Lefke</div>
+          <span class="text-[10px] text-slate-400">LAÜ Kampüs</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= MAIN LAYOUT: SIDEBAR + PRODUCT GRID ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 w-full flex-1">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+      
+      <!-- ================= LEFT FILTER SIDEBAR (DOLAP STYLE) ================= -->
+      <aside class="bg-white p-5 rounded-3xl border border-slate-200 shadow-xs space-y-6 lg:sticky lg:top-28">
+        
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <h2 class="text-sm font-extrabold text-slate-900 flex items-center gap-2">
+            <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+            <span>Filtreler</span>
+          </h2>
+          <button onclick="resetAllFilters()" class="text-xs font-semibold text-brand-600 hover:underline">Temizle</button>
+        </div>
+
+        <!-- Filter: Şehir / Konum (KKTC) -->
+        <div>
+          <h3 class="text-xs font-extrabold text-slate-800 mb-2.5">Şehir (KKTC)</h3>
+          <div class="space-y-1.5 text-xs text-slate-600">
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="radio" name="cityRadio" value="all" checked onchange="onCityFilterChange(this.value)" class="text-brand-600 focus:ring-brand-500">
+              <span>Tüm Ada (KKTC)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="radio" name="cityRadio" value="Lefkoşa" onchange="onCityFilterChange(this.value)" class="text-brand-600 focus:ring-brand-500">
+              <span>Lefkoşa (Dereboyu / YDÜ)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="radio" name="cityRadio" value="Girne" onchange="onCityFilterChange(this.value)" class="text-brand-600 focus:ring-brand-500">
+              <span>Girne (Liman / GAÜ)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="radio" name="cityRadio" value="Mağusa" onchange="onCityFilterChange(this.value)" class="text-brand-600 focus:ring-brand-500">
+              <span>Gazimağusa (DAÜ / City Mall)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="radio" name="cityRadio" value="İskele" onchange="onCityFilterChange(this.value)" class="text-brand-600 focus:ring-brand-500">
+              <span>İskele</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="radio" name="cityRadio" value="Güzelyurt" onchange="onCityFilterChange(this.value)" class="text-brand-600 focus:ring-brand-500">
+              <span>Güzelyurt (ODTÜ KKK)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter: Teslimat Yöntemi -->
+        <div class="pt-4 border-t border-slate-100">
+          <h3 class="text-xs font-extrabold text-slate-800 mb-2.5">Teslimat & Güvenlik</h3>
+          <div class="space-y-1.5 text-xs text-slate-600">
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="checkbox" id="filterMeetup" onchange="applySidebarFilters()" class="rounded text-brand-600 focus:ring-brand-500">
+              <span>📍 Güvenli Noktada Elden Teslim</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="checkbox" id="filterCargo" onchange="applySidebarFilters()" class="rounded text-brand-600 focus:ring-brand-500">
+              <span>📦 Ada İçi Kargo (70 TL)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer hover:text-slate-900">
+              <input type="checkbox" id="filterTrade" onchange="applySidebarFilters()" class="rounded text-brand-600 focus:ring-brand-500">
+              <span>🔄 Takasa Açık İlanlar</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter: Beden -->
+        <div class="pt-4 border-t border-slate-100">
+          <h3 class="text-xs font-extrabold text-slate-800 mb-2.5">Beden</h3>
+          <div class="flex flex-wrap gap-1.5">
+            <button onclick="toggleSizeFilter('XS / 34', this)" class="size-btn text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 hover:border-brand-500 transition">XS</button>
+            <button onclick="toggleSizeFilter('S / 36', this)" class="size-btn text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 hover:border-brand-500 transition">S</button>
+            <button onclick="toggleSizeFilter('M / 38', this)" class="size-btn text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 hover:border-brand-500 transition">M</button>
+            <button onclick="toggleSizeFilter('L / 40', this)" class="size-btn text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 hover:border-brand-500 transition">L</button>
+            <button onclick="toggleSizeFilter('Standart', this)" class="size-btn text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-200 hover:border-brand-500 transition">Standart</button>
+          </div>
+        </div>
+
+        <!-- Filter: Fiyat Aralığı -->
+        <div class="pt-4 border-t border-slate-100">
+          <h3 class="text-xs font-extrabold text-slate-800 mb-2">Fiyat Aralığı (TL)</h3>
+          <div class="flex items-center gap-2">
+            <input type="number" id="minPriceInput" placeholder="Min" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-brand-400 focus:outline-none">
+            <span class="text-slate-400">-</span>
+            <input type="number" id="maxPriceInput" placeholder="Max" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2 focus:ring-2 focus:ring-brand-400 focus:outline-none">
+          </div>
+          <button onclick="applySidebarFilters()" class="w-full mt-2.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition">Fiyat Filtrele</button>
+        </div>
+
+        <!-- Escrow Protection Badge -->
+        <div class="p-3.5 rounded-2xl bg-rose-50/70 border border-rose-100 text-[11px] text-slate-600 space-y-1">
+          <div class="flex items-center gap-1.5 font-bold text-brand-700">
+            <span>🛡️ İdilişko Güvencesi</span>
+          </div>
+          <p class="leading-relaxed">Paranız siz ürünü teslim alıp onaylayana kadar İdilişko havuz hesabında bloke edilir.</p>
+        </div>
+
+      </aside>
+
+      <!-- ================= RIGHT PRODUCT GRID ================= -->
+      <section class="lg:col-span-3">
+        
+        <!-- Grid Toolbar -->
+        <div class="bg-white p-4 rounded-2xl border border-slate-200 mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+          <div>
+            <h2 class="text-base font-extrabold text-slate-900" id="resultsTitle">KKTC Vitrini</h2>
+            <p class="text-xs text-slate-500" id="itemCountLabel">Toplam 8 ilan listeleniyor</p>
+          </div>
+
+          <!-- Sort Select -->
+          <div class="flex items-center gap-2 self-end sm:self-auto">
+            <span class="text-xs text-slate-400 font-medium">Sırala:</span>
+            <select id="sortSelect" onchange="applySorting(this.value)" class="text-xs font-bold bg-slate-50 text-slate-700 border border-slate-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-400 cursor-pointer">
+              <option value="newest">En Yeniler</option>
+              <option value="price-asc">Fiyat: Düşükten Yükseğe</option>
+              <option value="price-desc">Fiyat: Yüksekten Düşüğe</option>
+              <option value="popular">En Çok Beğenilenler</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Cards Grid (Dolap Style 3 or 4 columns) -->
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-4">
+          <!-- Injected By JS -->
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER (DOLAP STYLE) ================= -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-10 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <div class="text-lg font-black tracking-tight text-slate-900 mb-2">
+          idil<span class="text-brand-600">işko</span>
+        </div>
+        <p class="leading-relaxed text-[11px] text-slate-500">
+          Kuzey Kıbrıs Türk Cumhuriyeti'ndeki kadınlar ve kız öğrenciler için özel olarak tasarlanmış, güvenli elden buluşma ve havuz hesap korumalı ikinci el moda topluluğu.
+        </p>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-900 mb-2.5">Kıbrıs İçi Güvenlik</h4>
+        <ul class="space-y-1.5 text-[11px]">
+          <li>• İdilişko Güvenli Havuz Hesap Nasıl Çalışır?</li>
+          <li>• Lefkoşa, Girne, Mağusa Buluşma Noktaları</li>
+          <li>• Doğrulanmış Profil Rozeti Alma</li>
+          <li>• İade ve Cayma Hakları</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-900 mb-2.5">Kampüsler & Topluluk</h4>
+        <ul class="space-y-1.5 text-[11px]">
+          <li>• DAÜ (Doğu Akdeniz Üniversitesi) Dolabı</li>
+          <li>• YDÜ (Yakın Doğu Üniversitesi) Dolabı</li>
+          <li>• GAÜ (Girne Amerikan Üniversitesi) Dolabı</li>
+          <li>• ODTÜ KKK & UKÜ Dolapları</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold text-slate-900 mb-2.5">Lojistik & İletişim</h4>
+        <p class="text-[11px] leading-relaxed">
+          Ada içi kargo anlaşmalarımız ve güvenli teslimat noktaları hakkında destek almak için bize ulaşabilirsiniz.
+        </p>
+        <span class="inline-block mt-3 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px] border border-emerald-200">
+          ● 7/24 Kıbrıs İçi Destek Aktif
+        </span>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 mt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px]">
+      <span>© 2026 İdilişko (KKTC). Tüm hakları saklıdır.</span>
+      <span>Kıbrıs'ın kızlarına sevgiyle tasarlandı 🌸</span>
+    </div>
+  </footer>
+
+  <!-- ================= PRODUCT DETAIL DRAWER / MODAL ================= -->
+  <div id="productDetailModal" class="hidden fixed inset-0 bg-slate-950/80 z-[100] flex items-center justify-center p-3 sm:p-5 backdrop-blur-sm overflow-y-auto" style="z-index: 9999;">
+    <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[calc(100vh-3rem)] sm:max-h-[760px] overflow-hidden flex flex-col md:flex-row shadow-2xl relative my-auto">
+      
+      <!-- Close Button -->
+      <button onclick="closeProductDetail()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/90 shadow text-slate-600 hover:bg-slate-100 font-bold flex items-center justify-center transition">✕</button>
+
+      <!-- Left: Large Image Gallery -->
+      <div class="md:w-1/2 bg-slate-100 relative min-h-[340px] md:min-h-full flex items-center justify-center overflow-hidden">
+        <img id="modalImg" class="w-full h-full object-cover">
+        <span id="modalCityBadge" class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-black bg-white/95 text-slate-800 shadow-sm"></span>
+        <span id="modalConditionBadge" class="absolute bottom-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-slate-900/80 text-white shadow-sm"></span>
+      </div>
+
+      <!-- Right: Product Info & Actions -->
+      <div class="md:w-1/2 p-6 flex flex-col justify-between overflow-y-auto">
+        
+        <div class="space-y-4">
+          <!-- Seller Info Card -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+              <img id="modalSellerAvatar" class="w-10 h-10 rounded-full object-cover border-2 border-brand-200">
+              <div>
+                <span id="modalSellerName" class="text-xs font-black text-slate-900 block"></span>
+                <span id="modalSellerLoc" class="text-[11px] text-slate-500"></span>
+              </div>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[10px] font-bold bg-rose-50 text-brand-700 px-2.5 py-1 rounded-full border border-rose-200">
+              🛡️ Doğrulanmış Profil
+            </span>
+          </div>
+
+          <!-- Title, Brand, Price -->
+          <div>
+            <span id="modalBrand" class="text-xs font-extrabold text-brand-600 uppercase tracking-wider block"></span>
+            <h2 id="modalTitle" class="text-lg font-black text-slate-900 mt-0.5 leading-snug"></h2>
+            
+            <div class="mt-2 flex items-baseline gap-3">
+              <span id="modalPrice" class="text-2xl font-black text-slate-900"></span>
+              <span id="modalOrigPrice" class="text-sm text-slate-400 line-through"></span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">Fırsat Ürün</span>
+            </div>
+          </div>
+
+          <!-- Sizing & Fit for Girls -->
+          <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200">
+            <span class="text-xs font-extrabold text-slate-800 block mb-2">🌸 Kalıp & Satıcı Ölçü Detayı</span>
+            <div class="grid grid-cols-3 gap-2 text-center text-xs">
+              <div class="bg-white p-2 rounded-xl border border-slate-100">
+                <span class="text-[10px] text-slate-400 block font-medium">Beden</span>
+                <span id="modalSize" class="font-extrabold text-slate-900"></span>
+              </div>
+              <div class="bg-white p-2 rounded-xl border border-slate-100">
+                <span class="text-[10px] text-slate-400 block font-medium">Satıcı Ölçüsü</span>
+                <span class="font-extrabold text-slate-900">1.68 cm / 54 kg</span>
+              </div>
+              <div class="bg-white p-2 rounded-xl border border-slate-100">
+                <span class="text-[10px] text-slate-400 block font-medium">Kalıp Duruşu</span>
+                <span class="font-extrabold text-slate-900">Tam Kalıp</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cyprus Delivery & Meetup Options -->
+          <div class="bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-200 space-y-2 text-xs">
+            <span class="font-bold text-emerald-900 block">🛡️ Ada İçi Teslimat Şekilleri:</span>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-700 font-black">📍 Güvenli Elden Teslim:</span>
+              <span id="modalMeetupLocation" class="text-slate-700 font-medium"></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-700 font-black">📦 Ada İçi Kargo:</span>
+              <span class="text-slate-700 font-medium">Kargom Kıbrıs ile sabit 70 TL (Tüm Ada)</span>
+            </div>
+          </div>
+
+          <!-- Protection note -->
+          <p class="text-[11px] text-slate-500 flex items-center gap-1.5">
+            <span>🔒</span>
+            <span>Paranız siz ürünü teslim alıp onaylayana kadar <b>İdilişko Güvenli Havuzunda</b> korunur.</span>
+          </p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-5 border-t border-slate-100 flex items-center gap-3 mt-4">
+          <button onclick="openOfferModal()" class="flex-1 py-3 border-2 border-brand-500 text-brand-600 hover:bg-rose-50 font-black text-xs rounded-2xl transition">
+            Teklif Ver 🏷️
+          </button>
+          <button onclick="openCheckoutModal()" class="flex-1 py-3 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-2xl shadow-md shadow-brand-500/25 transition">
+            Güvenli Satın Al 🛍️
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= OFFER MODAL ================= -->
+  <div id="offerModal" class="hidden fixed inset-0 bg-slate-950/80 z-[100] flex items-center justify-center p-4 backdrop-blur-sm overflow-y-auto" style="z-index: 9999;">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl relative my-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+        <h3 class="text-sm font-extrabold text-slate-900">Satıcıya Teklif Ver</h3>
+        <button onclick="closeOfferModal()" class="text-slate-400 font-bold">✕</button>
+      </div>
+      <p class="text-xs text-slate-500 leading-relaxed">
+        Satıcı teklifinizi kabul ettiğinde indirimli fiyattan güvenli satın alma hakkı kazanırsınız.
+      </p>
+      
+      <div class="grid grid-cols-3 gap-2">
+        <button onclick="setOfferDiscount(0.10)" class="py-2.5 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-brand-500 rounded-xl text-xs font-bold transition">-%10</button>
+        <button onclick="setOfferDiscount(0.20)" class="py-2.5 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-brand-500 rounded-xl text-xs font-bold transition">-%20</button>
+        <button onclick="setOfferDiscount(0.30)" class="py-2.5 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-brand-500 rounded-xl text-xs font-bold transition">-%30</button>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold text-slate-700 mb-1">Teklif Tutarı (TL)</label>
+        <input type="number" id="offerAmountInput" class="w-full text-sm font-black bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+      </div>
+
+      <button onclick="submitOffer()" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs rounded-xl shadow transition">
+        Teklifi Gönder 🚀
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= CHECKOUT / BUY MODAL ================= -->
+  <div id="checkoutModal" class="hidden fixed inset-0 bg-slate-950/80 z-[100] flex items-center justify-center p-4 backdrop-blur-sm overflow-y-auto" style="z-index: 9999;">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl relative my-auto">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div>
+          <h3 class="text-sm font-black text-slate-900">Güvenli Havuz ile Satın Al</h3>
+          <span class="text-[10px] text-slate-400">İdilişko Güvenli Ödeme Blokesi</span>
+        </div>
+        <button onclick="closeCheckoutModal()" class="text-slate-400 font-bold">✕</button>
+      </div>
+      
+      <div class="space-y-2">
+        <span class="text-xs font-extrabold text-slate-700 block">Kıbrıs İçi Teslimat Şekli:</span>
+        
+        <label class="flex items-start gap-3 p-3 rounded-2xl border-2 border-brand-400 bg-rose-50/50 cursor-pointer">
+          <input type="radio" name="checkoutDeliveryRadio" checked class="mt-0.5 text-brand-600">
+          <div>
+            <span class="text-xs font-bold text-slate-900 block">📍 Güvenli Noktada Elden Teslim (Ücretsiz)</span>
+            <span class="text-[11px] text-slate-500">Ortak güvenli noktada buluşup ürünü elden teslim alın.</span>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 bg-white cursor-pointer hover:border-slate-300">
+          <input type="radio" name="checkoutDeliveryRadio" class="mt-0.5 text-brand-600">
+          <div>
+            <span class="text-xs font-bold text-slate-900 block">📦 Ada İçi Kargo — Kargom Kıbrıs (70 TL)</span>
+            <span class="text-[11px] text-slate-500">Kapınıza veya kargo şubesine güvenle gönderilsin.</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-1.5">
+        <div class="flex justify-between text-slate-500">
+          <span>Ürün Tutarı:</span>
+          <span id="checkoutPriceText" class="font-bold text-slate-900"></span>
+        </div>
+        <div class="flex justify-between text-slate-500">
+          <span>Alıcı Güvence Bedeli:</span>
+          <span class="font-bold text-emerald-600">0 TL (Lansmana Özel Ücretsiz)</span>
+        </div>
+        <div class="flex justify-between text-sm font-black text-slate-900 border-t border-slate-200 pt-2">
+          <span>Toplam Tutar:</span>
+          <span id="checkoutTotalText" class="text-brand-600"></span>
+        </div>
+      </div>
+
+      <button onclick="confirmOrder()" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-2xl shadow-lg shadow-brand-500/25 transition">
+        🔒 Siparişi ve Güvenli Bloke Tutarı Onayla
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= ADD ITEM (SELL) DESKTOP STUDIO MODAL ================= -->
+  <div id="addItemModal" class="hidden fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto" style="z-index: 9999;">
+    <div class="bg-white rounded-[24px] max-w-5xl w-full max-h-[calc(100vh-3rem)] sm:max-h-[780px] flex flex-col shadow-2xl border border-slate-100 overflow-hidden relative my-auto">
+        
+        <!-- Modal Header (Always Visible at Top of Dialog) -->
+        <div class="px-6 sm:px-8 py-3.5 sm:py-4 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-2xl bg-rose-50 text-brand-600 flex items-center justify-center font-bold text-base">
+              🛍️
+            </div>
+            <div>
+              <h3 class="text-base font-black text-slate-900 tracking-tight">İdilişko Dolabında Satış Yap</h3>
+              <p class="text-[11px] text-slate-400">Ürününün fotoğraflarını yükle, detayları doldur ve tüm KKTC vitrininde anında yayınla.</p>
+            </div>
+          </div>
+          <button type="button" onclick="closeAddItemModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 font-bold flex items-center justify-center transition">
+            ✕
+          </button>
+        </div>
+
+        <!-- Modal Form Body (Scrolls Inside Dialog) -->
+        <form id="addItemForm" onsubmit="handleAddItem(event)" class="flex-1 min-h-0 overflow-y-auto px-6 sm:px-8 py-5 overscroll-contain">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+            
+            <!-- LEFT COLUMN: PHOTOS & LIVE PREVIEW (5 cols) -->
+            <div class="lg:col-span-5 space-y-4">
+              
+              <!-- Photo Upload Area -->
+              <div>
+                <div class="flex items-center justify-between mb-1.5">
+                  <label class="text-xs font-black text-slate-800">Ürün Fotoğrafları</label>
+                  <span class="text-[10px] text-slate-400">En fazla 4 fotoğraf</span>
+                </div>
+
+                <!-- Main Cover Photo Dropzone (Compact, elegant height) -->
+                <div class="relative h-44 rounded-2xl border-2 border-dashed border-rose-200 bg-rose-50/40 hover:bg-rose-50/80 transition p-2 flex flex-col items-center justify-center cursor-pointer group overflow-hidden">
+                  <img id="formPreviewImg" src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=80" class="absolute inset-0 w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex flex-col items-center justify-center text-white">
+                    <span class="text-xs font-bold">Görseli Değiştir</span>
+                  </div>
+                  <span class="absolute top-2.5 left-2.5 bg-brand-600 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full shadow">Kapak Fotoğrafı</span>
+                </div>
+
+                <!-- Extra Thumbnail Slots -->
+                <div class="grid grid-cols-3 gap-2 mt-2">
+                  <div class="h-16 rounded-xl border border-dashed border-slate-200 hover:border-brand-400 bg-slate-50 flex flex-col items-center justify-center text-slate-400 hover:text-brand-600 cursor-pointer transition">
+                    <span class="text-sm font-bold">+</span>
+                    <span class="text-[9px] font-bold">Arka Duruş</span>
+                  </div>
+                  <div class="h-16 rounded-xl border border-dashed border-slate-200 hover:border-brand-400 bg-slate-50 flex flex-col items-center justify-center text-slate-400 hover:text-brand-600 cursor-pointer transition">
+                    <span class="text-sm font-bold">+</span>
+                    <span class="text-[9px] font-bold">Etiket</span>
+                  </div>
+                  <div class="h-16 rounded-xl border border-dashed border-slate-200 hover:border-brand-400 bg-slate-50 flex flex-col items-center justify-center text-slate-400 hover:text-brand-600 cursor-pointer transition">
+                    <span class="text-sm font-bold">+</span>
+                    <span class="text-[9px] font-bold">Kusur/Detay</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mini Live Preview Card -->
+              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80">
+                <span class="text-[10px] font-black text-slate-500 uppercase tracking-wider block mb-1.5">👁️ Vitrinde Nasıl Görünecek?</span>
+                <div class="bg-white rounded-xl p-2.5 border border-slate-200 shadow-xs flex gap-3 items-center">
+                  <img id="liveCardImg" src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=150&q=80" class="w-14 h-18 rounded-lg object-cover shrink-0">
+                  <div class="min-w-0 flex-1">
+                    <span id="liveCardBrand" class="text-[10px] font-black text-brand-600 uppercase tracking-wider">ZARA</span>
+                    <h4 id="liveCardTitle" class="text-xs font-bold text-slate-900 truncate">Zara Çiçekli Mini Saten Elbise</h4>
+                    <div class="flex items-center gap-2 mt-0.5">
+                      <span id="liveCardSize" class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">S / 36</span>
+                      <span id="liveCardCity" class="text-[10px] text-slate-400 font-semibold">📍 Lefkoşa</span>
+                    </div>
+                    <div class="mt-1 font-black text-xs text-slate-900" id="liveCardPrice">850 TL</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tips Banner -->
+              <div class="p-3 rounded-2xl bg-amber-50/70 border border-amber-200/80 text-[11px] text-amber-900 space-y-0.5">
+                <span class="font-bold block">💡 İdilişko Satış İpucu:</span>
+                <p class="leading-relaxed text-amber-800">
+                  Doğal gün ışığında çekilmiş, boydan duruşu net olan kıyafetler adada %80 daha hızlı satılır!
+                </p>
+              </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: PRODUCT DETAILS & PRICING & LOGISTICS (7 cols) -->
+            <div class="lg:col-span-7 space-y-4">
+              
+              <!-- Group 1: Title & Category -->
+              <div class="space-y-3 bg-white">
+                <div>
+                  <label class="block text-xs font-black text-slate-800 mb-1">İlan Başlığı <span class="text-brand-600">*</span></label>
+                  <input type="text" id="newTitle" required oninput="updateLivePreview()" placeholder="Örn: Zara Zümrüt Yeşili Saten Abiye Elbise" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div>
+                    <label class="block text-xs font-black text-slate-800 mb-1">Kategori <span class="text-brand-600">*</span></label>
+                    <select id="newCategory" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition cursor-pointer">
+                      <option value="Mezuniyet">✨ Mezuniyet & Abiye</option>
+                      <option value="Giyim" selected>👗 Günlük Giyim & Takım</option>
+                      <option value="Çanta">👜 Çanta & Cüzdan</option>
+                      <option value="Ayakkabı">👠 Ayakkabı & Sneaker</option>
+                      <option value="Kozmetik">💄 Orijinal Kozmetik</option>
+                      <option value="Aksesuar">💍 Takı & Aksesuar</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-black text-slate-800 mb-1">Beden <span class="text-brand-600">*</span></label>
+                    <select id="newSize" onchange="updateLivePreview()" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition cursor-pointer">
+                      <option value="XS / 34">XS / 34</option>
+                      <option value="S / 36" selected>S / 36</option>
+                      <option value="M / 38">M / 38</option>
+                      <option value="L / 40">L / 40</option>
+                      <option value="Standart">Standart</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Brand with Quick Chips -->
+                <div>
+                  <label class="block text-xs font-black text-slate-800 mb-1">Marka <span class="text-brand-600">*</span></label>
+                  <input type="text" id="newBrand" required oninput="updateLivePreview()" placeholder="Örn: Zara, Mango, Bershka, Asos" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+                  <div class="flex items-center gap-1.5 mt-1.5 overflow-x-auto text-[10px]">
+                    <span class="text-slate-400 font-semibold shrink-0">Popüler:</span>
+                    <button type="button" onclick="setBrandInput('Zara')" class="px-2 py-0.5 bg-slate-100 hover:bg-rose-50 hover:text-brand-600 rounded-md font-bold transition">Zara</button>
+                    <button type="button" onclick="setBrandInput('Mango')" class="px-2 py-0.5 bg-slate-100 hover:bg-rose-50 hover:text-brand-600 rounded-md font-bold transition">Mango</button>
+                    <button type="button" onclick="setBrandInput('Bershka')" class="px-2 py-0.5 bg-slate-100 hover:bg-rose-50 hover:text-brand-600 rounded-md font-bold transition">Bershka</button>
+                    <button type="button" onclick="setBrandInput('Stradivarius')" class="px-2 py-0.5 bg-slate-100 hover:bg-rose-50 hover:text-brand-600 rounded-md font-bold transition">Stradivarius</button>
+                    <button type="button" onclick="setBrandInput('Asos')" class="px-2 py-0.5 bg-slate-100 hover:bg-rose-50 hover:text-brand-600 rounded-md font-bold transition">Asos</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Group 2: Girl-Centric Fit & Sizing Details -->
+              <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
+                <span class="text-xs font-black text-slate-800 block">🌸 Kalıp & Duruş Bilgisi (Alıcılar İçin Önemli)</span>
+                <div class="grid grid-cols-3 gap-2">
+                  <div>
+                    <span class="text-[10px] font-bold text-slate-500 block mb-1">Satıcı Boyu</span>
+                    <input type="text" placeholder="1.68 cm" value="1.68 cm" class="w-full text-xs font-semibold bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none">
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold text-slate-500 block mb-1">Satıcı Kilosu</span>
+                    <input type="text" placeholder="54 kg" value="54 kg" class="w-full text-xs font-semibold bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 focus:outline-none">
+                  </div>
+                  <div>
+                    <span class="text-[10px] font-bold text-slate-500 block mb-1">Kalıp</span>
+                    <select class="w-full text-xs font-semibold bg-white border border-slate-200 rounded-lg px-2 py-1.5 focus:outline-none">
+                      <option selected>Tam Kalıp</option>
+                      <option>Dar Kalıp</option>
+                      <option>Oversize</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Group 3: Pricing & Escrow Calculator -->
+              <div>
+                <label class="block text-xs font-black text-slate-800 mb-1">Fiyatlandırma & Kazanç (TL)</label>
+                <div class="grid grid-cols-2 gap-2.5">
+                  <div>
+                    <span class="text-[11px] font-bold text-slate-500 block mb-1">Satış Fiyatın (TL) <span class="text-brand-600">*</span></span>
+                    <input type="number" id="newPrice" required oninput="updatePriceCalculator()" placeholder="850" value="850" class="w-full text-xs font-black bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+                  </div>
+                  <div>
+                    <span class="text-[11px] font-bold text-slate-500 block mb-1">Orijinal / Mağaza Fiyatı</span>
+                    <input type="number" id="newOrigPrice" placeholder="1800" value="1800" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+                  </div>
+                </div>
+
+                <!-- Earnings calculator banner -->
+                <div class="mt-2 p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-1.5 text-emerald-800 font-bold">
+                    <span>🎉</span>
+                    <span>Lansmana Özel %0 Komisyon:</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[10px] text-slate-400 block font-medium">Hesabına geçecek tutar</span>
+                    <span id="earningsAmountText" class="text-sm font-black text-emerald-700">850 TL</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Group 4: KKTC Delivery & Meetup Options -->
+              <div class="p-3.5 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-2.5">
+                <span class="text-xs font-black text-brand-700 block">📍 KKTC Ada İçi Teslimat Şekli:</span>
+                
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-600 mb-1">Bulunduğun Şehir</label>
+                  <select id="newCity" onchange="updateLivePreview()" class="w-full text-xs font-semibold bg-white border border-slate-200 rounded-xl px-3 py-2 focus:ring-2 focus:ring-brand-400 focus:outline-none cursor-pointer">
+                    <option value="Lefkoşa" selected>📍 Lefkoşa (Dereboyu / YDÜ)</option>
+                    <option value="Girne">📍 Girne (Liman / GAÜ)</option>
+                    <option value="Mağusa">📍 Gazimağusa (DAÜ / City Mall)</option>
+                    <option value="İskele">📍 İskele (Long Beach)</option>
+                    <option value="Güzelyurt">📍 Güzelyurt (ODTÜ KKK)</option>
+                    <option value="Lefke">📍 Lefke (LAÜ Kampüs)</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1.5 text-xs text-slate-700 pt-0.5">
+                  <label class="flex items-center gap-2 cursor-pointer font-medium">
+                    <input type="checkbox" checked class="rounded text-brand-600 focus:ring-brand-500">
+                    <span>📍 <b>Güvenli Noktada Elden Teslim Uygun</b> (Ortak noktada buluşma)</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer font-medium">
+                    <input type="checkbox" checked class="rounded text-brand-600 focus:ring-brand-500">
+                    <span>📦 <b>Ada İçi Kargo Uygun</b> (Kargom Kıbrıs 70 TL sabit ücret)</span>
+                  </label>
+                  <label class="flex items-center gap-2 cursor-pointer font-medium">
+                    <input type="checkbox" class="rounded text-brand-600 focus:ring-brand-500">
+                    <span>🔄 <b>Takasa Açık</b> (Benzer ürünlerle takasa uygun)</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </form>
+
+        <!-- Modal Footer (Always Visible at Bottom of Dialog) -->
+        <div class="px-6 sm:px-8 py-3.5 border-t border-slate-100 bg-slate-50/90 backdrop-blur-xs flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-1.5 text-xs text-slate-500">
+            <span>🔒</span>
+            <span class="hidden sm:inline">Ödemeler teslim onayına kadar <b>İdilişko Güvenli Havuzunda</b> korunur.</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="closeAddItemModal()" class="px-5 py-2.5 rounded-full text-slate-500 hover:text-slate-800 font-bold hover:bg-slate-200 text-xs transition">
+              Vazgeç
+            </button>
+            <button type="button" onclick="document.getElementById('addItemForm').requestSubmit()" class="px-7 py-2.5 sm:py-3 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-full shadow-lg shadow-brand-500/25 hover:shadow-xl transition transform active:scale-95">
+              İlanı Hemen Yayınla ✨
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <!-- ================= AUTH (LOGIN & REGISTER) MODAL ================= -->
+  <div id="authModal" class="hidden fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto" style="z-index: 9999;">
+    <div class="bg-white rounded-[28px] max-w-md w-full max-h-[calc(100vh-3rem)] sm:max-h-[660px] flex flex-col shadow-2xl border border-slate-100 overflow-hidden relative my-auto">
+      
+      <!-- Modal Header with Tabs -->
+      <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white">
+        <div class="flex items-center gap-1.5 p-1 bg-slate-100 rounded-2xl">
+          <button id="authTabLogin" type="button" onclick="switchAuthTab('login')" class="px-4 py-1.5 rounded-xl text-xs font-black transition text-slate-500 hover:text-slate-800">
+            Giriş Yap
+          </button>
+          <button id="authTabRegister" type="button" onclick="switchAuthTab('register')" class="px-4 py-1.5 rounded-xl text-xs font-black transition bg-white text-slate-900 shadow-xs">
+            Kayıt Ol 🌸
+          </button>
+        </div>
+        <button type="button" onclick="closeAuthModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 font-bold flex items-center justify-center transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="flex-1 min-h-0 overflow-y-auto px-6 py-5">
+        
+        <!-- STEP 1: REGISTER VIEW -->
+        <div id="authRegisterView" class="space-y-4">
+          <div class="p-3 rounded-2xl bg-rose-50/80 border border-rose-100 text-xs text-brand-900 space-y-1">
+            <span class="font-black flex items-center gap-1.5">
+              <span>🛡️</span>
+              <span>Kıbrıs'ın Kızlarına Özel Güvenli Topluluk</span>
+            </span>
+            <p class="text-[11px] leading-relaxed text-brand-700">
+              İdilişko dolabını açmak tamamen ücretsizdir. KKTC telefon numaranla saniyeler içinde kaydolabilirsin.
+            </p>
+          </div>
+
+          <form id="registerForm" onsubmit="handleRegisterSubmit(event)" class="space-y-3">
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">Adın & Soyadın <span class="text-brand-600">*</span></label>
+              <input type="text" id="regFullName" required placeholder="Örn: Melis Taner" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+            </div>
+
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">Kullanıcı Adı <span class="text-brand-600">*</span></label>
+              <div class="relative">
+                <span class="absolute left-3.5 top-2.5 text-xs font-bold text-slate-400">@</span>
+                <input type="text" id="regUsername" required placeholder="melis_girne" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl pl-8 pr-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">KKTC Cep Telefonu <span class="text-brand-600">*</span></label>
+              <div class="relative flex">
+                <span class="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-slate-200 bg-slate-100 text-slate-700 text-xs font-bold shrink-0">
+                  +90
+                </span>
+                <input type="tel" id="regPhone" required placeholder="548 123 45 67" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-r-xl px-3 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+              </div>
+              <span class="text-[10px] text-slate-400 mt-1 block">KKTC hatları (542 / 548 / 533) veya Türkiye hatları</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-xs font-black text-slate-800 mb-1">Bulunduğun Şehir <span class="text-brand-600">*</span></label>
+                <select id="regCity" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition cursor-pointer">
+                  <option value="Girne" selected>📍 Girne</option>
+                  <option value="Lefkoşa">📍 Lefkoşa</option>
+                  <option value="Mağusa">📍 Gazimağusa</option>
+                  <option value="İskele">📍 İskele</option>
+                  <option value="Güzelyurt">📍 Güzelyurt</option>
+                  <option value="Lefke">📍 Lefke</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-black text-slate-800 mb-1">Üniversite / Kampüs</label>
+                <select id="regCampus" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition cursor-pointer">
+                  <option value="GAÜ Kampüs" selected>GAÜ</option>
+                  <option value="DAÜ Kampüs">DAÜ</option>
+                  <option value="YDÜ Kampüs">YDÜ</option>
+                  <option value="ODTÜ KKK">ODTÜ KKK</option>
+                  <option value="UKÜ Kampüs">UKÜ</option>
+                  <option value="LAÜ Kampüs">LAÜ</option>
+                  <option value="Kampüs Dışı">Kampüs Dışı</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">Şifre Belirle <span class="text-brand-600">*</span></label>
+              <input type="password" id="regPassword" required placeholder="En az 6 karakter" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+            </div>
+
+            <label class="flex items-start gap-2 pt-1 text-xs text-slate-600 cursor-pointer">
+              <input type="checkbox" required checked class="mt-0.5 rounded text-brand-600 focus:ring-brand-500">
+              <span class="text-[11px] leading-snug">
+                İdilişko kadın topluluk kurallarını ve <b class="text-brand-600">Güvenlik İlkelerini</b> onaylıyorum.
+              </span>
+            </label>
+
+            <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-2xl shadow-lg shadow-brand-500/25 transition mt-2">
+              SMS Doğrulamasına Geç 📲
+            </button>
+          </form>
+        </div>
+
+        <!-- STEP 2: SMS OTP VERIFICATION VIEW -->
+        <div id="authOtpView" class="hidden text-center space-y-3.5 py-1">
+          
+          <!-- Simulated KKTC SMS Push Notification Toast -->
+          <div id="smsNotificationToast" class="p-3.5 rounded-2xl bg-slate-900 text-white text-left shadow-xl border border-slate-800 space-y-1.5 transition">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 font-bold">
+              <span class="flex items-center gap-1.5 text-rose-400 font-black">
+                <span>💬</span>
+                <span>KKTC SMS Servisi (KKTCELL / Telsim)</span>
+              </span>
+              <span class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full font-bold">● İletildi</span>
+            </div>
+            <p class="text-xs text-slate-100 font-medium leading-relaxed">
+              İdilişko dolap onay kodunuz: <b id="simulatedCodeBadge" class="text-rose-400 font-black text-sm tracking-widest px-2 py-0.5 bg-slate-800 rounded-lg inline-block">----</b>. Güvenliğiniz için bu kodu kimseyle paylaşmayınız.
+            </p>
+            <div class="text-[10px] text-slate-400 flex items-center justify-between pt-1 border-t border-slate-800">
+              <span class="flex items-center gap-1">🔒 Güvenli Kız Topluluğu</span>
+              <button type="button" onclick="autoFillOtp()" class="text-brand-400 hover:text-brand-300 font-bold hover:underline flex items-center gap-0.5">
+                <span>Kodu Kutuya Aktar</span>
+                <span>📋</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-0.5">
+            <h3 class="text-sm font-black text-slate-900">SMS Onay Kodunu Gir</h3>
+            <p id="otpPhoneText" class="text-xs text-slate-500 mt-0.5">
+              +90 548 xxx xx xx numarana 4 haneli SMS kodu gönderildi.
+            </p>
+          </div>
+
+          <!-- 4 Separate Clean Input Fields with Auto-jump & Backspace support -->
+          <div>
+            <div class="flex justify-center gap-2.5 my-2.5" id="otpContainer">
+              <input type="text" id="otp0" maxlength="1" inputmode="numeric" autocomplete="one-time-code" class="otp-input w-12 h-14 text-center text-2xl font-black bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white rounded-2xl focus:outline-none transition">
+              <input type="text" id="otp1" maxlength="1" inputmode="numeric" class="otp-input w-12 h-14 text-center text-2xl font-black bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white rounded-2xl focus:outline-none transition">
+              <input type="text" id="otp2" maxlength="1" inputmode="numeric" class="otp-input w-12 h-14 text-center text-2xl font-black bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white rounded-2xl focus:outline-none transition">
+              <input type="text" id="otp3" maxlength="1" inputmode="numeric" class="otp-input w-12 h-14 text-center text-2xl font-black bg-slate-50 border-2 border-slate-200 focus:border-brand-500 focus:bg-white rounded-2xl focus:outline-none transition">
+            </div>
+            <p id="otpErrorMessage" class="hidden text-xs font-bold text-rose-600 mt-1"></p>
+          </div>
+
+          <!-- Timer & Action Buttons -->
+          <div class="space-y-2 pt-0.5">
+            <button type="button" onclick="confirmRegistrationOtp()" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-2xl shadow-lg shadow-brand-500/25 transition">
+              🌸 Kodu Onayla & Dolabımı Aç
+            </button>
+            <div class="flex items-center justify-between text-xs px-1 pt-1">
+              <button type="button" id="resendOtpBtn" onclick="resendOtpCode()" class="font-bold text-slate-400 hover:text-brand-600 transition">
+                Kodu Tekrar Gönder (<span id="otpTimerSpan">59</span>s)
+              </button>
+              <button type="button" onclick="switchAuthTab('register')" class="font-bold text-slate-400 hover:text-slate-600 transition">
+                ← Numarayı Değiştir
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: LOGIN VIEW -->
+        <div id="authLoginView" class="hidden space-y-4">
+          <div class="text-center pb-1">
+            <h3 class="text-base font-black text-slate-900">İdilişko Dolabına Giriş Yap</h3>
+            <p class="text-xs text-slate-400 mt-0.5">Kıbrıs'ın kızlarıyla güvenli alışverişe devam et.</p>
+          </div>
+
+          <form id="loginForm" onsubmit="handleLoginSubmit(event)" class="space-y-3">
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">Telefon Numarası veya Kullanıcı Adı</label>
+              <input type="text" id="loginUsername" required placeholder="Örn: @idil_kktc veya 548 123 45 67" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1">
+                <label class="block text-xs font-black text-slate-800">Şifre</label>
+                <a href="#" onclick="alert('SMS ile sıfırlama kodu gönderildi.')" class="text-[11px] font-bold text-brand-600 hover:underline">Şifremi Unuttum?</a>
+              </div>
+              <input type="password" id="loginPassword" required placeholder="••••••••" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none transition">
+            </div>
+
+            <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-2xl shadow-lg shadow-brand-500/25 transition">
+              Giriş Yap 🚀
+            </button>
+          </form>
+
+          <!-- Quick Demo Switcher -->
+          <div class="pt-3 border-t border-slate-100">
+            <span class="text-[10px] font-black text-slate-400 uppercase tracking-wider block mb-2 text-center">⚡ Test İçin Hızlı Hesap Seç</span>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" onclick="quickLoginDemo('idil')" class="p-2.5 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-brand-400 rounded-xl text-left transition">
+                <span class="text-xs font-black text-slate-800 block">İdil Özgen 👑</span>
+                <span class="text-[10px] text-slate-400">@idil_kktc (Girne)</span>
+              </button>
+              <button type="button" onclick="quickLoginDemo('melis')" class="p-2.5 bg-slate-50 hover:bg-rose-50 border border-slate-200 hover:border-brand-400 rounded-xl text-left transition">
+                <span class="text-xs font-black text-slate-800 block">Melis T. 🌸</span>
+                <span class="text-[10px] text-slate-400">@melis_girne (GAÜ)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="text-center pt-1 text-xs text-slate-500">
+            Hesabın yok mu?
+            <button onclick="switchAuthTab('register')" class="font-black text-brand-600 hover:underline ml-1">Hemen Kaydol 🌸</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= USER PROFILE & WARDROBE STUDIO MODAL ================= -->
+  <div id="profileModal" class="hidden fixed inset-0 bg-slate-950/80 z-[100] flex items-center justify-center p-3 sm:p-5 backdrop-blur-sm overflow-y-auto" style="z-index: 9999;">
+    <div class="bg-white rounded-[28px] max-w-4xl w-full max-h-[calc(100vh-3rem)] sm:max-h-[820px] flex flex-col shadow-2xl border border-slate-100 overflow-hidden relative my-auto">
+      
+      <!-- Top Cover & Header Area -->
+      <div class="h-24 sm:h-28 bg-gradient-to-r from-brand-600 via-rose-500 to-amber-500 relative flex items-center justify-between px-6 shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-black tracking-wider uppercase text-white bg-black/25 px-3 py-1 rounded-full backdrop-blur-xs flex items-center gap-1.5">
+            <span>🌸</span>
+            <span>İdilişko Dolabım & Profil</span>
+          </span>
+        </div>
+        <button type="button" onclick="closeProfileModal()" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/40 text-white font-bold flex items-center justify-center transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- User Info & Action Row -->
+      <div class="px-6 sm:px-8 pb-3 pt-0 border-b border-slate-100 bg-white shrink-0 relative">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 -mt-9 sm:-mt-11">
+          
+          <!-- Avatar + Basic Info -->
+          <div class="flex items-end gap-3.5">
+            <div class="relative group shrink-0">
+              <img id="profileModalAvatar" src="" class="w-20 h-20 sm:w-22 sm:h-22 rounded-full object-cover border-4 border-white shadow-lg bg-white">
+              <button onclick="promptChangeAvatar()" title="Profil Fotoğrafını Değiştir" class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-brand-600 text-white text-[11px] font-bold flex items-center justify-center shadow hover:scale-110 transition">
+                📷
+              </button>
+            </div>
+            <div class="mb-1">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h3 id="profileModalName" class="text-lg font-black text-slate-900 tracking-tight"></h3>
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-rose-50 text-brand-700 border border-rose-200">
+                  🛡️ Doğrulanmış Profil ✓
+                </span>
+              </div>
+              <p id="profileModalMeta" class="text-xs text-slate-500 font-semibold mt-0.5"></p>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="flex items-center gap-2 flex-wrap pb-1">
+            <button onclick="openAddItemModal()" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-black rounded-full shadow-md shadow-brand-500/25 transition flex items-center gap-1.5">
+              <span>+ Satış Yap</span>
+              <span>🛍️</span>
+            </button>
+            <button onclick="switchProfileTab('edit')" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-black rounded-full transition">
+              ✏️ Düzenle
+            </button>
+            <button onclick="handleLogout()" class="px-3 py-2 text-rose-600 hover:bg-rose-50 text-xs font-bold rounded-full transition" title="Çıkış Yap">
+              🚪 Çıkış
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Bio text -->
+        <p id="profileModalBio" class="text-xs text-slate-600 mt-2.5 leading-relaxed max-w-2xl"></p>
+
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-3.5">
+          <div class="p-2.5 bg-slate-50 rounded-2xl border border-slate-200/80 text-center">
+            <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Dolap İlanları</span>
+            <span id="profileStatsItemsCount" class="text-sm sm:text-base font-black text-slate-900">0 İlan</span>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded-2xl border border-slate-200/80 text-center">
+            <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Satıcı Puanı</span>
+            <span id="profileModalRating" class="text-sm sm:text-base font-black text-amber-500">5.0 ★</span>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded-2xl border border-slate-200/80 text-center">
+            <span class="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Tamamlanan Satış</span>
+            <span id="profileModalSales" class="text-sm sm:text-base font-black text-slate-900">0</span>
+          </div>
+          <div class="p-2.5 bg-rose-50/70 rounded-2xl border border-rose-200 text-center">
+            <span class="text-[9px] text-brand-600 font-black uppercase tracking-wider block">Cüzdan (Güvenli Havuz)</span>
+            <span id="profileModalWallet" class="text-sm sm:text-base font-black text-brand-600">0 TL</span>
+          </div>
+        </div>
+
+        <!-- Profile Tabs Header -->
+        <div class="flex items-center gap-1.5 mt-3.5 border-t border-slate-100 pt-2.5 overflow-x-auto">
+          <button id="pTabItems" onclick="switchProfileTab('items')" class="px-3.5 py-1.5 rounded-xl text-xs font-black transition bg-slate-900 text-white shrink-0">
+            👗 Dolabımdaki İlanlarım (<span id="profileTabItemCount">0</span>)
+          </button>
+          <button id="pTabOrders" onclick="switchProfileTab('orders')" class="px-3.5 py-1.5 rounded-xl text-xs font-black transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 shrink-0">
+            🛍️ Siparişlerim & Havuz
+          </button>
+          <button id="pTabWallet" onclick="switchProfileTab('wallet')" class="px-3.5 py-1.5 rounded-xl text-xs font-black transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 shrink-0">
+            💳 Cüzdan & Havale
+          </button>
+          <button id="pTabEdit" onclick="switchProfileTab('edit')" class="px-3.5 py-1.5 rounded-xl text-xs font-black transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 shrink-0">
+            ⚙️ Bilgilerimi Düzenle
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Contents (Scrollable inside Dialog) -->
+      <div class="flex-1 min-h-0 overflow-y-auto px-6 sm:px-8 py-5">
+        
+        <!-- TAB 1: USER'S WARDROBE ITEMS -->
+        <div id="pViewItems" class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-black text-slate-800 tracking-tight">Dolabımda Satışta Olan Ürünler</h4>
+            <span class="text-[11px] text-slate-400">Tüm KKTC vitrininde anında görünür</span>
+          </div>
+          <div id="profileItemsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- TAB 2: ORDERS & ESCROW -->
+        <div id="pViewOrders" class="hidden space-y-4">
+          <div class="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-start gap-3">
+            <span class="text-xl">🛡️</span>
+            <div>
+              <span class="font-black block">İdilişko Güvenli Havuz Koruması</span>
+              <p class="text-[11px] text-emerald-700 mt-0.5 leading-relaxed">
+                Satın aldığınız ürünlerde paranız teslim alıp onaylayana kadar satıcıya aktarılmaz. Buluşup kontrol ettikten sonra 'Teslim Aldım ve Onayla' butonuna basabilirsiniz.
+              </p>
+            </div>
+          </div>
+
+          <div id="profileOrdersContainer" class="space-y-3">
+            <!-- Dynamically populated orders -->
+          </div>
+        </div>
+
+        <!-- TAB 3: WALLET & IBAN -->
+        <div id="pViewWallet" class="hidden space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="bg-slate-900 text-white p-5 rounded-3xl space-y-4 shadow-sm">
+              <span class="text-xs font-black text-slate-400 uppercase tracking-wider block">İdilişko Güvenli Cüzdan</span>
+              <div>
+                <span class="text-[11px] text-slate-400 block">Kullanılabilir Serbest Bakiye:</span>
+                <span id="walletAvailableText" class="text-3xl font-black text-white">0 TL</span>
+              </div>
+              <div class="pt-2 border-t border-slate-800 flex justify-between text-xs text-slate-400">
+                <span>Havuzda Bloke Bakiye:</span>
+                <span id="walletBlockedText" class="font-bold text-amber-400">0 TL (Teslimat Bekleyen)</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-3xl space-y-3">
+              <h5 class="text-xs font-black text-slate-900">🏦 KKTC Banka Hesabına Aktarma (IBAN)</h5>
+              <p class="text-[11px] text-slate-500 leading-snug">
+                Bakiyenizi Kıbrıs İktisat Bankası, Creditwest, Koopbank veya Ziraat KKTC hesabınıza 1 iş gününde masrafsız aktarabilirsiniz.
+              </p>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-600 mb-1">KKTC Banka IBAN Numarası</label>
+                <input type="text" id="walletIbanInput" placeholder="CT62 0002 0000 1234 5678 0001 01" class="w-full text-xs font-semibold bg-white border border-slate-200 rounded-xl px-3 py-2 focus:ring-2 focus:ring-brand-400 focus:outline-none">
+              </div>
+              <button onclick="requestBankWithdrawal()" class="w-full py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-xl shadow transition">
+                Bakiyeyi Hesabıma Aktar 💸
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB 4: EDIT PROFILE FORM -->
+        <div id="pViewEdit" class="hidden space-y-4">
+          <form id="editProfileForm" onsubmit="handleProfileUpdate(event)" class="space-y-3.5 max-w-xl">
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">Adın & Soyadın</label>
+              <input type="text" id="editFullName" required class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none">
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-black text-slate-800 mb-1">Kullanıcı Adı</label>
+                <input type="text" id="editUsername" required class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-black text-slate-800 mb-1">KKTC Telefonu</label>
+                <input type="tel" id="editPhone" required class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-black text-slate-800 mb-1">Şehir</label>
+                <select id="editCity" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none">
+                  <option value="Girne">📍 Girne</option>
+                  <option value="Lefkoşa">📍 Lefkoşa</option>
+                  <option value="Mağusa">📍 Gazimağusa</option>
+                  <option value="İskele">📍 İskele</option>
+                  <option value="Güzelyurt">📍 Güzelyurt</option>
+                  <option value="Lefke">📍 Lefke</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-black text-slate-800 mb-1">Kampüs</label>
+                <select id="editCampus" class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none">
+                  <option value="GAÜ Kampüs">GAÜ</option>
+                  <option value="DAÜ Kampüs">DAÜ</option>
+                  <option value="YDÜ Kampüs">YDÜ</option>
+                  <option value="ODTÜ KKK">ODTÜ KKK</option>
+                  <option value="UKÜ Kampüs">UKÜ</option>
+                  <option value="LAÜ Kampüs">LAÜ</option>
+                  <option value="Kampüs Dışı">Kampüs Dışı</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">Dolap Biyografisi</label>
+              <textarea id="editBio" rows="2" placeholder="Örn: Zara ve Mango kıyafetlerimi paylaşıyorum..." class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-black text-slate-800 mb-1">Profil Fotoğrafı URL</label>
+              <input type="url" id="editAvatarUrl" placeholder="https://..." class="w-full text-xs font-semibold bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:outline-none">
+            </div>
+
+            <div class="pt-2 flex items-center gap-3">
+              <button type="submit" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-xl shadow transition">
+                Değişiklikleri Kaydet 💾
+              </button>
+              <button type="button" onclick="switchProfileTab('items')" class="px-4 py-2.5 text-xs font-bold text-slate-500 hover:text-slate-800 transition">
+                İptal
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT APP LOGIC ================= -->
+  <script>
+    // ================= SUPABASE CANLI BULUT BAĞLANTISI (idilişko) =================
+    const SUPABASE_URL = 'https://lfwecantxhyxwmoybiun.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_zmPpzlZaplxkBQjw4wdgTg_IRzpL_rq';
+    const supabaseClient = (window.supabase && SUPABASE_URL && SUPABASE_ANON_KEY)
+      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      : null;
+
+    // Product Database (KKTC & Girls Fashion)
+    let initialProducts = [
+      {
+        id: 1,
+        title: "Zara Saten Abiye Elbise (Zümrüt Yeşili)",
+        brand: "Zara",
+        size: "S / 36",
+        price: 1400,
+        origPrice: 2800,
+        city: "Girne",
+        category: "Mezuniyet",
+        condition: "Sadece 1 Kez Giyildi",
+        meetup: "Girne Liman veya Barış Parkı",
+        image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80",
+        seller: "Melis T.",
+        sellerAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
+        likes: 38,
+        isLiked: false,
+        tags: ["Mezuniyet", "Girne", "Abiye"]
+      },
+      {
+        id: 2,
+        title: "Mango Suni Deri Baget Omuz Çantası",
+        brand: "Mango",
+        size: "Standart",
+        price: 650,
+        origPrice: 1300,
+        city: "Mağusa",
+        category: "Çanta",
+        condition: "Tertemiz / Kusursuz",
+        meetup: "DAÜ Kampüs İçi / City Mall",
+        image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80",
+        seller: "Selin K.",
+        sellerAvatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80",
+        likes: 24,
+        isLiked: false,
+        tags: ["DAÜ", "Çanta", "Mağusa"]
+      },
+      {
+        id: 3,
+        title: "Bershka Keten Pantolon & Crop Ceket Takım",
+        brand: "Bershka",
+        size: "M / 38",
+        price: 850,
+        origPrice: 1900,
+        city: "Lefkoşa",
+        category: "Giyim",
+        condition: "Çok Az Kullanılmış",
+        meetup: "Dereboyu Gloria Jean's Önü",
+        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80",
+        seller: "Derya B.",
+        sellerAvatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80",
+        likes: 45,
+        isLiked: false,
+        tags: ["YDÜ", "Giyim", "Lefkoşa"]
+      },
+      {
+        id: 4,
+        title: "Kiko Milano Dudak Yağı & Hydra Gloss (Sıfır)",
+        brand: "Kiko",
+        size: "Standart",
+        price: 450,
+        origPrice: 750,
+        city: "Girne",
+        category: "Kozmetik",
+        condition: "Açılmamış Sıfır",
+        meetup: "Girne Çarşı / Kargo",
+        image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=80",
+        seller: "İdil Ö.",
+        sellerAvatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
+        likes: 19,
+        isLiked: false,
+        tags: ["Kozmetik", "Girne"]
+      },
+      {
+        id: 5,
+        title: "Asos Balo & Mezuniyet Taşlı Sırt Dekolteli",
+        brand: "Asos",
+        size: "XS / 34",
+        price: 2100,
+        origPrice: 4200,
+        city: "Mağusa",
+        category: "Mezuniyet",
+        condition: "Kuru Temizlemesi Yapıldı",
+        meetup: "Salamis Yolu / DAÜ CL Binası",
+        image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80",
+        seller: "Nazlı A.",
+        sellerAvatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80",
+        likes: 62,
+        isLiked: false,
+        tags: ["Mezuniyet", "DAÜ", "Abiye"]
+      },
+      {
+        id: 6,
+        title: "Stradivarius Topuklu Deri Terlik / Sandalet",
+        brand: "Stradivarius",
+        size: "38 No",
+        price: 700,
+        origPrice: 1400,
+        city: "Lefkoşa",
+        category: "Ayakkabı",
+        condition: "Kutusunda Sıfır",
+        meetup: "Küçük Kaymaklı / Dereboyu",
+        image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=80",
+        seller: "İrem S.",
+        sellerAvatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80",
+        likes: 27,
+        isLiked: false,
+        tags: ["Ayakkabı", "Lefkoşa"]
+      },
+      {
+        id: 7,
+        title: "H&M Oversize Bej Blazer Ceket",
+        brand: "H&M",
+        size: "M / 38",
+        price: 920,
+        origPrice: 2100,
+        city: "İskele",
+        category: "Giyim",
+        condition: "Etiketli Sıfır",
+        meetup: "İskele Merkez / Long Beach",
+        image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=80",
+        seller: "Aslı G.",
+        sellerAvatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80",
+        likes: 31,
+        isLiked: false,
+        tags: ["Giyim", "İskele"]
+      },
+      {
+        id: 8,
+        title: "OXXO Mom Fit Vintage Jean & Kemer",
+        brand: "OXXO",
+        size: "S / 36",
+        price: 600,
+        origPrice: 1450,
+        city: "Güzelyurt",
+        category: "Giyim",
+        condition: "Tertemiz",
+        meetup: "ODTÜ KKK Girişi / Çarşı",
+        image: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=700&q=80",
+        seller: "Buse M.",
+        sellerAvatar: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=120&q=80",
+        likes: 18,
+        isLiked: false,
+        tags: ["Giyim", "Güzelyurt"]
+      }
+    ];
+
+    let products = [...initialProducts];
+    let selectedCity = 'all';
+    let selectedCategory = 'all';
+    let selectedSizes = [];
+    let searchQuery = '';
+    let sortMode = 'newest';
+    let activeProduct = null;
+
+    // Render Product Cards
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      
+      const filtered = products.filter(item => {
+        const matchCity = (selectedCity === 'all') || (item.city === selectedCity);
+        const matchCat = (selectedCategory === 'all') || (item.category === selectedCategory);
+        const matchSize = (selectedSizes.length === 0) || (selectedSizes.includes(item.size));
+        const matchSearch = (searchQuery === '') || 
+          (item.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.brand.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.city.toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (item.tags && item.tags.some(t => t.toLowerCase().includes(searchQuery.toLowerCase())));
+        return matchCity && matchCat && matchSize && matchSearch;
+      });
+
+      // Sorting
+      if (sortMode === 'price-asc') filtered.sort((a, b) => a.price - b.price);
+      else if (sortMode === 'price-desc') filtered.sort((a, b) => b.price - a.price);
+      else if (sortMode === 'popular') filtered.sort((a, b) => b.likes - a.likes);
+      else if (sortMode === 'newest') filtered.sort((a, b) => b.id - a.id);
+
+      document.getElementById('itemCountLabel').textContent = `Toplam ${filtered.length} ilan listeleniyor`;
+      document.getElementById('resultsTitle').textContent = selectedCity === 'all' ? 'Tüm KKTC Vitrini' : `📍 ${selectedCity} Vitrini`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400 bg-white rounded-3xl border border-slate-200">
+            <span class="text-4xl block mb-2">🔍</span>
+            <h3 class="text-sm font-bold text-slate-700">Aradığın kriterde ilan bulunamadı.</h3>
+            <p class="text-xs text-slate-400 mt-1">Filtreleri temizleyip tekrar dene canım!</p>
+            <button onclick="resetAllFilters()" class="mt-4 px-4 py-2 bg-brand-600 text-white font-bold text-xs rounded-full">Filtreleri Sıfırla</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-brand-300 shadow-xs hover:shadow-md transition duration-200 flex flex-col group cursor-pointer" onclick="openProductDetail(${item.id})">
+          
+          <!-- Image Container -->
+          <div class="relative aspect-3/4 bg-slate-100 overflow-hidden">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+            
+            <!-- City Badge -->
+            <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-full text-[10px] font-extrabold bg-white/95 text-slate-800 shadow-xs">
+              📍 ${item.city}
+            </span>
+
+            <!-- Like Button -->
+            <button onclick="event.stopPropagation(); toggleLike(${item.id})" class="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-white/90 backdrop-blur-xs flex items-center justify-center text-slate-400 hover:text-brand-500 shadow-xs transition">
+              <svg class="w-4 h-4 ${item.isLiked ? 'text-brand-500 fill-current' : 'fill-none'}" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </button>
+
+            <!-- Size Badge -->
+            <span class="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-900/75 text-white">
+              ${item.size}
+            </span>
+
+            <!-- Condition Pill -->
+            <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md text-[9px] font-semibold bg-white/90 text-slate-700">
+              ${item.condition.split(' ')[0]}
+            </span>
+          </div>
+
+          <!-- Content Details -->
+          <div class="p-3.5 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-black text-brand-600 uppercase tracking-wider">${item.brand}</span>
+                <span class="text-[10px] text-slate-400 flex items-center gap-1 font-semibold">
+                  <span>❤️</span> ${item.likes}
+                </span>
+              </div>
+              <h3 class="text-xs font-bold text-slate-800 line-clamp-1 mt-1">${item.title}</h3>
+              <p class="text-[10px] text-slate-400 mt-0.5">@${item.seller} • ${item.meetup.split('/')[0]}</p>
+            </div>
+
+            <!-- Price -->
+            <div class="mt-3 pt-2 border-t border-slate-100 flex items-baseline justify-between">
+              <div>
+                <span class="text-sm font-black text-slate-900">${item.price} TL</span>
+                <span class="text-[10px] text-slate-400 line-through ml-1.5">${item.origPrice} TL</span>
+              </div>
+              <span class="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                -%${Math.round((1 - item.price / item.origPrice) * 100)}
+              </span>
+            </div>
+          </div>
+
+        </div>
+      `).join('');
+    }
+
+    // Toggle Like
+    function toggleLike(id) {
+      const p = products.find(x => x.id === id);
+      if (p) {
+        p.isLiked = !p.isLiked;
+        p.likes += p.isLiked ? 1 : -1;
+        renderProducts();
+      }
+    }
+
+    // City Filter
+    function onCityFilterChange(city) {
+      selectedCity = city;
+      document.getElementById('headerCitySelect').value = city;
+      const radio = document.querySelector(`input[name="cityRadio"][value="${city}"]`);
+      if (radio) radio.checked = true;
+      renderProducts();
+    }
+
+    // Category Filter
+    function setCategoryFilter(cat) {
+      selectedCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white');
+        btn.classList.add('hover:bg-slate-100', 'text-slate-600');
+      });
+      event.target.classList.remove('hover:bg-slate-100', 'text-slate-600');
+      event.target.classList.add('bg-slate-900', 'text-white');
+      renderProducts();
+    }
+
+    // Tag Filter
+    function filterByTag(tag) {
+      searchQuery = tag;
+      document.getElementById('desktopSearchInput').value = tag;
+      renderProducts();
+    }
+
+    // Search Input
+    function onSearch(query) {
+      searchQuery = query;
+      renderProducts();
+    }
+
+    // Size Filter
+    function toggleSizeFilter(size, btn) {
+      const idx = selectedSizes.indexOf(size);
+      if (idx > -1) {
+        selectedSizes.splice(idx, 1);
+        btn.classList.remove('bg-brand-600', 'text-white', 'border-brand-600');
+        btn.classList.add('border-slate-200');
+      } else {
+        selectedSizes.push(size);
+        btn.classList.remove('border-slate-200');
+        btn.classList.add('bg-brand-600', 'text-white', 'border-brand-600');
+      }
+      renderProducts();
+    }
+
+    // Sort
+    function applySorting(mode) {
+      sortMode = mode;
+      renderProducts();
+    }
+
+    // Sidebar Filters
+    function applySidebarFilters() {
+      const min = Number(document.getElementById('minPriceInput').value);
+      const max = Number(document.getElementById('maxPriceInput').value);
+      
+      products = initialProducts.filter(item => {
+        if (min && item.price < min) return false;
+        if (max && item.price > max) return false;
+        return true;
+      });
+      renderProducts();
+    }
+
+    // Reset All Filters
+    function resetAllFilters() {
+      selectedCity = 'all';
+      selectedCategory = 'all';
+      selectedSizes = [];
+      searchQuery = '';
+      sortMode = 'newest';
+      products = [...initialProducts];
+      
+      document.getElementById('headerCitySelect').value = 'all';
+      document.querySelector('input[name="cityRadio"][value="all"]').checked = true;
+      document.getElementById('desktopSearchInput').value = '';
+      document.getElementById('minPriceInput').value = '';
+      document.getElementById('maxPriceInput').value = '';
+
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white');
+      });
+      document.querySelector('.cat-pill').classList.add('bg-slate-900', 'text-white');
+
+      document.querySelectorAll('.size-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-600', 'text-white', 'border-brand-600');
+        btn.classList.add('border-slate-200');
+      });
+
+      renderProducts();
+    }
+
+    // Product Detail Modal
+    function openProductDetail(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      activeProduct = p;
+
+      document.getElementById('modalImg').src = p.image;
+      document.getElementById('modalBrand').textContent = p.brand;
+      document.getElementById('modalTitle').textContent = p.title;
+      document.getElementById('modalSize').textContent = p.size;
+      document.getElementById('modalPrice').textContent = `${p.price} TL`;
+      document.getElementById('modalOrigPrice').textContent = `${p.origPrice} TL`;
+      document.getElementById('modalCityBadge').textContent = `📍 ${p.city}`;
+      document.getElementById('modalConditionBadge').textContent = p.condition;
+      document.getElementById('modalMeetupLocation').textContent = p.meetup;
+
+      document.getElementById('modalSellerName').textContent = p.seller;
+      document.getElementById('modalSellerLoc').textContent = `Doğrulanmış Profil • 📍 ${p.city}`;
+      document.getElementById('modalSellerAvatar').src = p.sellerAvatar;
+
+      document.getElementById('productDetailModal').classList.remove('hidden');
+      lockBodyScroll(true);
+    }
+
+    function closeProductDetail() {
+      document.getElementById('productDetailModal').classList.add('hidden');
+      lockBodyScroll(false);
+    }
+
+    // Offer Modal
+    function openOfferModal() {
+      if (!activeProduct) return;
+      document.getElementById('offerAmountInput').value = Math.round(activeProduct.price * 0.85);
+      document.getElementById('offerModal').classList.remove('hidden');
+      lockBodyScroll(true);
+    }
+
+    function closeOfferModal() {
+      document.getElementById('offerModal').classList.add('hidden');
+      lockBodyScroll(false);
+    }
+
+    function setOfferDiscount(discount) {
+      if (!activeProduct) return;
+      const amt = Math.round(activeProduct.price * (1 - discount));
+      document.getElementById('offerAmountInput').value = amt;
+    }
+
+    function submitOffer() {
+      const val = document.getElementById('offerAmountInput').value;
+      closeOfferModal();
+      closeProductDetail();
+      alert(`🎉 Harika! ${activeProduct.seller} kullanıcısına ${val} TL teklifiniz başarıyla iletildi.`);
+    }
+
+    // Checkout Modal
+    function openCheckoutModal() {
+      if (!activeProduct) return;
+      document.getElementById('checkoutPriceText').textContent = `${activeProduct.price} TL`;
+      document.getElementById('checkoutTotalText').textContent = `${activeProduct.price} TL`;
+      document.getElementById('checkoutModal').classList.remove('hidden');
+      lockBodyScroll(true);
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+      lockBodyScroll(false);
+    }
+
+    function confirmOrder() {
+      closeCheckoutModal();
+      closeProductDetail();
+      alert(`✅ Siparişiniz İdilişko Güvenli Havuzunda oluşturuldu!\n\nSatıcıya bildirim gönderildi. Ürünü teslim alıp sistemden onaylayana kadar ödemeniz bloke hesapta güvendedir.`);
+    }
+
+    // Add Item Modal
+    function openAddItemModal() {
+      if (!currentUser) {
+        alert('🌸 İdilişko dolabında satış yapabilmek için lütfen önce giriş yap veya ücretsiz kayıt ol!');
+        openAuthModal('register');
+        return;
+      }
+      const formEl = document.getElementById('addItemForm');
+      if (formEl) formEl.scrollTop = 0;
+      document.getElementById('addItemModal').classList.remove('hidden');
+      lockBodyScroll(true);
+      updateLivePreview();
+      updatePriceCalculator();
+    }
+
+    function closeAddItemModal() {
+      document.getElementById('addItemModal').classList.add('hidden');
+      lockBodyScroll(false);
+    }
+
+    function setBrandInput(brand) {
+      document.getElementById('newBrand').value = brand;
+      updateLivePreview();
+    }
+
+    function updatePriceCalculator() {
+      const price = Number(document.getElementById('newPrice').value) || 0;
+      const earningsEl = document.getElementById('earningsAmountText');
+      if (earningsEl) {
+        earningsEl.textContent = `${price} TL`;
+      }
+      updateLivePreview();
+    }
+
+    function updateLivePreview() {
+      const title = document.getElementById('newTitle').value || 'Zara Çiçekli Mini Saten Elbise';
+      const brand = document.getElementById('newBrand').value || 'ZARA';
+      const size = document.getElementById('newSize').value || 'S / 36';
+      const city = document.getElementById('newCity').value || 'Lefkoşa';
+      const price = document.getElementById('newPrice').value || '850';
+
+      const cardTitle = document.getElementById('liveCardTitle');
+      const cardBrand = document.getElementById('liveCardBrand');
+      const cardSize = document.getElementById('liveCardSize');
+      const cardCity = document.getElementById('liveCardCity');
+      const cardPrice = document.getElementById('liveCardPrice');
+
+      if (cardTitle) cardTitle.textContent = title;
+      if (cardBrand) cardBrand.textContent = brand.toUpperCase();
+      if (cardSize) cardSize.textContent = size;
+      if (cardCity) cardCity.textContent = `📍 ${city}`;
+      if (cardPrice) cardPrice.textContent = `${price} TL`;
+    }
+
+    async function handleAddItem(e) {
+      e.preventDefault();
+      const title = document.getElementById('newTitle').value;
+      const brand = document.getElementById('newBrand').value;
+      const size = document.getElementById('newSize').value;
+      const city = document.getElementById('newCity').value;
+      const category = document.getElementById('newCategory').value;
+      const price = Number(document.getElementById('newPrice').value);
+      const origPrice = Number(document.getElementById('newOrigPrice').value) || price * 1.5;
+
+      const newItem = {
+        id: Date.now(),
+        title,
+        brand,
+        size,
+        city,
+        category,
+        price,
+        origPrice,
+        condition: "Çok İyi Durumda",
+        meetup: `${city} Güvenli Buluşma Noktası`,
+        image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=80",
+        seller: currentUser ? currentUser.name : "İdil Ö.",
+        sellerAvatar: currentUser ? currentUser.avatar : "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
+        likes: 1,
+        isLiked: false,
+        tags: [city, category]
+      };
+
+      initialProducts.unshift(newItem);
+      products.unshift(newItem);
+      renderProducts();
+      if (currentUser) updateProfileModalUI();
+      closeAddItemModal();
+      e.target.reset();
+
+      // Canlı Supabase Bulut Veritabanına Kaydet
+      if (supabaseClient) {
+        try {
+          const catId = category === 'Mezuniyet' ? 1 : (category === 'Çanta' ? 3 : 2);
+          const sellerUuid = (currentUser && currentUser.id && currentUser.id.length > 25) 
+            ? currentUser.id 
+            : 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11';
+          const { data: supaItem } = await supabaseClient.from('products').insert({
+            seller_id: sellerUuid,
+            category_id: catId,
+            title,
+            brand,
+            size,
+            price,
+            original_price: origPrice,
+            city,
+            condition: 'Kusursuz İkinci El',
+            allow_safe_meetup: true,
+            allow_cargo: true
+          }).select();
+
+          if (supaItem && supaItem[0]) {
+            await supabaseClient.from('product_images').insert({
+              product_id: supaItem[0].id,
+              image_url: newItem.image,
+              is_cover: true
+            });
+            newItem.id = supaItem[0].id;
+          }
+        } catch (err) {
+          console.warn('Supabase insert warning:', err);
+        }
+      }
+
+      alert('✨ İlanınız başarıyla eklendi! Hem vitrinde hem de Supabase bulut veritabanında yayına girdi!');
+    }
+
+    // ================= AUTHENTICATION & USER MANAGEMENT =================
+    const defaultUsers = {
+      idil: {
+        id: 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11',
+        name: 'İdil Özgen',
+        username: 'idil_kktc',
+        phone: '548 800 00 01',
+        city: 'Girne',
+        campus: 'GAÜ Kampüs',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+        sales: 14,
+        rating: 4.9,
+        wallet: 2450,
+        bio: '🌸 Dolabımdaki temiz kıyafetleri paylaşıyorum. Girne Liman & GAÜ elden teslim noktaları.',
+        iban: 'CT62 0002 0000 1234 5678 0001 01'
+      },
+      melis: {
+        id: 'b0eebc99-9c0b-4ef8-bb6d-6bb9bd380a22',
+        name: 'Melis T.',
+        username: 'melis_girne',
+        phone: '548 800 00 02',
+        city: 'Girne',
+        campus: 'GAÜ Kampüs',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+        sales: 8,
+        rating: 4.9,
+        wallet: 1200,
+        bio: '👗 Zara ve Mango mezuniyet abiyelerimi yarı fiyatına paylaşıyorum!',
+        iban: 'CT62 0002 0000 9876 5432 0002 02'
+      }
+    };
+
+    let currentUser = null;
+    try {
+      const savedUser = localStorage.getItem('idilisko_active_user');
+      if (savedUser) {
+        currentUser = JSON.parse(savedUser);
+      }
+    } catch (e) {
+      currentUser = null;
+    }
+
+    function updateAuthHeader() {
+      const area = document.getElementById('authHeaderArea');
+      if (!area) return;
+
+      if (currentUser) {
+        area.innerHTML = `
+          <button onclick="openProfileModal()" class="flex items-center gap-2 p-1.5 pl-2 pr-3.5 rounded-full border border-slate-200 hover:border-brand-300 hover:bg-rose-50/50 transition">
+            <img src="${currentUser.avatar || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80'}" class="w-7 h-7 rounded-full object-cover border border-rose-200">
+            <div class="text-left hidden sm:block">
+              <span class="text-xs font-bold text-slate-800 block leading-tight">${currentUser.name}</span>
+              <span class="text-[9px] text-brand-600 font-extrabold flex items-center gap-0.5">🌸 Dolabım & Profil</span>
+            </div>
+          </button>
+        `;
+        updateProfileModalUI();
+      } else {
+        area.innerHTML = `
+          <button onclick="openAuthModal('login')" class="text-xs font-black text-slate-700 hover:text-brand-600 px-3 py-2 rounded-full hover:bg-slate-100 transition">
+            Giriş Yap
+          </button>
+          <button onclick="openAuthModal('register')" class="text-xs font-black text-brand-600 bg-rose-50 hover:bg-rose-100 border border-rose-200 px-3.5 py-2 rounded-full transition shadow-xs flex items-center gap-1">
+            <span>Kayıt Ol</span>
+            <span>🌸</span>
+          </button>
+        `;
+      }
+    }
+
+    // Auth Modal Actions
+    function openAuthModal(tab = 'register') {
+      document.getElementById('authModal').classList.remove('hidden');
+      lockBodyScroll(true);
+      switchAuthTab(tab);
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.add('hidden');
+      lockBodyScroll(false);
+    }
+
+    function switchAuthTab(tab) {
+      const tabLogin = document.getElementById('authTabLogin');
+      const tabReg = document.getElementById('authTabRegister');
+      const viewReg = document.getElementById('authRegisterView');
+      const viewLogin = document.getElementById('authLoginView');
+      const viewOtp = document.getElementById('authOtpView');
+
+      if (viewOtp) viewOtp.classList.add('hidden');
+
+      if (tab === 'login') {
+        tabLogin.className = "px-4 py-1.5 rounded-xl text-xs font-black transition bg-white text-slate-900 shadow-xs";
+        tabReg.className = "px-4 py-1.5 rounded-xl text-xs font-black transition text-slate-500 hover:text-slate-800";
+        viewLogin.classList.remove('hidden');
+        viewReg.classList.add('hidden');
+      } else {
+        tabReg.className = "px-4 py-1.5 rounded-xl text-xs font-black transition bg-white text-slate-900 shadow-xs";
+        tabLogin.className = "px-4 py-1.5 rounded-xl text-xs font-black transition text-slate-500 hover:text-slate-800";
+        viewReg.classList.remove('hidden');
+        viewLogin.classList.add('hidden');
+      }
+    }
+
+    // ================= DYNAMIC OTP & SMS SIMULATION =================
+    let activeGeneratedOtp = null;
+    let otpCountdownTimer = null;
+    let pendingRegistration = null;
+
+    function setupOtpInputListeners() {
+      for (let i = 0; i < 4; i++) {
+        const input = document.getElementById(`otp${i}`);
+        if (!input) continue;
+
+        input.addEventListener('input', (e) => {
+          const val = e.target.value.replace(/[^0-9]/g, '');
+          e.target.value = val ? val.charAt(val.length - 1) : '';
+          const errEl = document.getElementById('otpErrorMessage');
+          if (errEl) errEl.classList.add('hidden');
+          if (val && i < 3) {
+            const next = document.getElementById(`otp${i + 1}`);
+            if (next) next.focus();
+          }
+        });
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !e.target.value && i > 0) {
+            const prev = document.getElementById(`otp${i - 1}`);
+            if (prev) {
+              prev.focus();
+              prev.value = '';
+            }
+          } else if (e.key === 'Enter') {
+            confirmRegistrationOtp();
+          }
+        });
+
+        input.addEventListener('paste', (e) => {
+          e.preventDefault();
+          const pasteData = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '');
+          if (pasteData) {
+            for (let j = 0; j < 4; j++) {
+              const digit = pasteData.charAt(j);
+              const target = document.getElementById(`otp${j}`);
+              if (target && digit) target.value = digit;
+            }
+            const last = document.getElementById('otp3');
+            if (last) last.focus();
+          }
+        });
+      }
+    }
+
+    function generateNewOtp() {
+      activeGeneratedOtp = Math.floor(1000 + Math.random() * 9000).toString();
+      const badge = document.getElementById('simulatedCodeBadge');
+      if (badge) badge.textContent = activeGeneratedOtp;
+      
+      for (let i = 0; i < 4; i++) {
+        const el = document.getElementById(`otp${i}`);
+        if (el) el.value = '';
+      }
+      const err = document.getElementById('otpErrorMessage');
+      if (err) err.classList.add('hidden');
+      
+      startOtpCountdown(60);
+      
+      setTimeout(() => {
+        const first = document.getElementById('otp0');
+        if (first) first.focus();
+      }, 150);
+    }
+
+    function autoFillOtp() {
+      if (!activeGeneratedOtp) return;
+      for (let i = 0; i < 4; i++) {
+        const el = document.getElementById(`otp${i}`);
+        if (el) el.value = activeGeneratedOtp.charAt(i);
+      }
+      const last = document.getElementById('otp3');
+      if (last) last.focus();
+      const err = document.getElementById('otpErrorMessage');
+      if (err) err.classList.add('hidden');
+    }
+
+    function startOtpCountdown(seconds) {
+      if (otpCountdownTimer) clearInterval(otpCountdownTimer);
+      let remaining = seconds;
+      const span = document.getElementById('otpTimerSpan');
+      const btn = document.getElementById('resendOtpBtn');
+      if (btn) btn.disabled = true;
+      if (span) span.textContent = remaining;
+
+      otpCountdownTimer = setInterval(() => {
+        remaining--;
+        if (span) span.textContent = remaining;
+        if (remaining <= 0) {
+          clearInterval(otpCountdownTimer);
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = 'Kodu Tekrar Gönder 🔄';
+          }
+        }
+      }, 1000);
+    }
+
+    function resendOtpCode() {
+      generateNewOtp();
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const fullName = document.getElementById('regFullName').value.trim();
+      const username = document.getElementById('regUsername').value.trim().replace('@', '');
+      const phone = document.getElementById('regPhone').value.trim();
+      const city = document.getElementById('regCity').value;
+      const campus = document.getElementById('regCampus').value;
+
+      pendingRegistration = {
+        fullName,
+        username,
+        phone,
+        city,
+        campus
+      };
+
+      document.getElementById('authRegisterView').classList.add('hidden');
+      document.getElementById('authOtpView').classList.remove('hidden');
+      document.getElementById('otpPhoneText').textContent = `+90 ${phone} numarana 4 haneli KKTC SMS onay kodu gönderildi.`;
+      
+      generateNewOtp();
+    }
+
+    async function confirmRegistrationOtp() {
+      if (!pendingRegistration) return;
+      
+      let enteredCode = '';
+      for (let i = 0; i < 4; i++) {
+        const el = document.getElementById(`otp${i}`);
+        if (el) enteredCode += el.value.trim();
+      }
+
+      const errEl = document.getElementById('otpErrorMessage');
+
+      if (enteredCode.length < 4) {
+        if (errEl) {
+          errEl.textContent = '⚠️ Lütfen 4 haneli SMS onay kodunun tamamını giriniz.';
+          errEl.classList.remove('hidden');
+        }
+        return;
+      }
+
+      if (enteredCode !== activeGeneratedOtp) {
+        if (errEl) {
+          errEl.textContent = '❌ Girdiğiniz SMS kodu hatalı! Lütfen yukarıdaki bildirimdeki kodu giriniz.';
+          errEl.classList.remove('hidden');
+        }
+        return;
+      }
+
+      if (errEl) errEl.classList.add('hidden');
+      const p = pendingRegistration;
+
+      const newUser = {
+        id: `usr_${Date.now()}`,
+        name: p.fullName,
+        username: p.username,
+        phone: p.phone,
+        city: p.city,
+        campus: p.campus,
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+        sales: 0,
+        rating: 5.0,
+        wallet: 0,
+        bio: `🌸 İdilişko dolabıma hoş geldiniz! ${p.city} (${p.campus}) içi güvenli buluşma ve teslimat.`,
+        iban: ''
+      };
+
+      // Canlı Supabase users tablosuna kaydet
+      if (supabaseClient) {
+        try {
+          await supabaseClient.from('users').insert({
+            phone_number: `+90${p.phone.replace(/\s+/g, '')}`,
+            full_name: p.fullName,
+            username: p.username,
+            avatar_url: newUser.avatar,
+            city: p.city,
+            campus_name: p.campus,
+            bio: newUser.bio,
+            is_verified: true,
+            wallet_available_balance: 0.00
+          });
+        } catch (err) {
+          console.warn('Supabase user insert:', err);
+        }
+      }
+
+      currentUser = newUser;
+      localStorage.setItem('idilisko_active_user', JSON.stringify(newUser));
+      updateAuthHeader();
+      closeAuthModal();
+
+      alert(`🎉 Tebrikler ${newUser.name}!\n\nSMS doğrulamanız başarıyla tamamlandı ve İdilişko onaylı kız dolabınız açıldı.`);
+      openProfileModal();
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('loginUsername').value.trim();
+      const cleanName = input.replace('@', '');
+
+      currentUser = {
+        id: `usr_${Date.now()}`,
+        name: cleanName.charAt(0).toUpperCase() + cleanName.slice(1),
+        username: cleanName.toLowerCase(),
+        phone: '548 123 45 67',
+        city: 'Girne',
+        campus: 'GAÜ Kampüs',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+        sales: 5,
+        rating: 4.9,
+        wallet: 850,
+        bio: '🌸 Dolabımdaki temiz kıyafetler. GAÜ & Girne içi elden teslim.',
+        iban: ''
+      };
+
+      localStorage.setItem('idilisko_active_user', JSON.stringify(currentUser));
+      updateAuthHeader();
+      closeAuthModal();
+      alert(`🌸 Hoş geldin ${currentUser.name}! İdilişko dolabına giriş yapıldı.`);
+      openProfileModal();
+    }
+
+    function quickLoginDemo(key) {
+      if (defaultUsers[key]) {
+        currentUser = defaultUsers[key];
+        localStorage.setItem('idilisko_active_user', JSON.stringify(currentUser));
+        updateAuthHeader();
+        closeAuthModal();
+        alert(`👑 ${currentUser.name} profiline geçiş yapıldı!`);
+        openProfileModal();
+      }
+    }
+
+    function handleLogout() {
+      currentUser = null;
+      localStorage.removeItem('idilisko_active_user');
+      updateAuthHeader();
+      closeProfileModal();
+      alert('👋 Oturumun kapatıldı. İstediğin zaman tekrar giriş yapabilirsin.');
+    }
+
+    // ================= PROFILE & WARDROBE STUDIO =================
+    let activeProfileTab = 'items';
+
+    function openProfileModal() {
+      if (!currentUser) {
+        openAuthModal('login');
+        return;
+      }
+      updateProfileModalUI();
+      switchProfileTab('items');
+      document.getElementById('profileModal').classList.remove('hidden');
+      lockBodyScroll(true);
+    }
+
+    function closeProfileModal() {
+      document.getElementById('profileModal').classList.add('hidden');
+      lockBodyScroll(false);
+    }
+
+    function updateProfileModalUI() {
+      if (!currentUser) return;
+
+      const av = document.getElementById('profileModalAvatar');
+      const nm = document.getElementById('profileModalName');
+      const mt = document.getElementById('profileModalMeta');
+      const bio = document.getElementById('profileModalBio');
+      const sl = document.getElementById('profileModalSales');
+      const rt = document.getElementById('profileModalRating');
+      const wl = document.getElementById('profileModalWallet');
+      const wAvail = document.getElementById('walletAvailableText');
+      const wBlock = document.getElementById('walletBlockedText');
+
+      if (av) av.src = currentUser.avatar || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80';
+      if (nm) nm.textContent = currentUser.name;
+      if (mt) mt.textContent = `@${currentUser.username} • 📍 ${currentUser.city} • 🎓 ${currentUser.campus || 'Kampüs Belirtilmedi'}`;
+      if (bio) bio.textContent = currentUser.bio || '🌸 İdilişko dolabımda temiz, kaliteli ve özenle seçilmiş kıyafetleri paylaşıyorum.';
+      if (sl) sl.textContent = `${currentUser.sales || 0} Satış`;
+      if (rt) rt.textContent = `${currentUser.rating || 5.0} ★`;
+      if (wl) wl.textContent = `${currentUser.wallet || 0} TL`;
+      if (wAvail) wAvail.textContent = `${currentUser.wallet || 0} TL`;
+      if (wBlock) wBlock.textContent = `0 TL (Teslimat Bekleyen)`;
+
+      renderProfileWardrobe();
+    }
+
+    function switchProfileTab(tab) {
+      activeProfileTab = tab;
+
+      const tabs = ['items', 'orders', 'wallet', 'edit'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`pTab${t.charAt(0).toUpperCase() + t.slice(1)}`);
+        const view = document.getElementById(`pView${t.charAt(0).toUpperCase() + t.slice(1)}`);
+        
+        if (btn && view) {
+          if (t === tab) {
+            btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-black transition bg-slate-900 text-white shrink-0";
+            view.classList.remove('hidden');
+          } else {
+            btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-black transition text-slate-600 hover:text-slate-900 hover:bg-slate-100 shrink-0";
+            view.classList.add('hidden');
+          }
+        }
+      });
+
+      if (tab === 'items') renderProfileWardrobe();
+      if (tab === 'orders') renderProfileOrders();
+      if (tab === 'wallet') renderProfileWallet();
+      if (tab === 'edit') populateEditProfileForm();
+    }
+
+    function renderProfileWardrobe() {
+      if (!currentUser) return;
+      const container = document.getElementById('profileItemsContainer');
+      if (!container) return;
+
+      const myItems = products.filter(p => {
+        return p.seller && (
+          p.seller.toLowerCase() === currentUser.name.toLowerCase() ||
+          p.seller.toLowerCase().includes(currentUser.name.split(' ')[0].toLowerCase()) ||
+          (currentUser.username && p.seller.toLowerCase().includes(currentUser.username.toLowerCase())) ||
+          (p.sellerId && p.sellerId === currentUser.id)
+        );
+      });
+
+      const countBadge = document.getElementById('profileTabItemCount');
+      const statsCount = document.getElementById('profileStatsItemsCount');
+      if (countBadge) countBadge.textContent = myItems.length;
+      if (statsCount) statsCount.textContent = `${myItems.length} İlan`;
+
+      if (myItems.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-12 px-4 rounded-3xl border-2 border-dashed border-rose-200 bg-rose-50/40">
+            <div class="w-16 h-16 mx-auto rounded-3xl bg-white shadow-md text-3xl flex items-center justify-center mb-3">👗</div>
+            <h4 class="text-sm font-black text-slate-800">Dolabında Henüz Satışta Olan Ürün Yok</h4>
+            <p class="text-xs text-slate-500 max-w-md mx-auto mt-1 mb-4 leading-relaxed">
+              Dolabında giymediğin abiye, elbise, çanta veya aksesuarları KKTC'deki kızlarla paylaş, saniyeler içinde nakite çevir!
+            </p>
+            <button onclick="closeProfileModal(); openAddItemModal();" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-black text-xs rounded-full shadow-lg shadow-brand-500/25 transition">
+              + İlk İlanını Hemen Yayınla ✨
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = myItems.map(item => `
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition flex flex-col justify-between group">
+          <div>
+            <div class="relative h-44 overflow-hidden bg-slate-100">
+              <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-emerald-500 text-white shadow">
+                🟢 Yayında
+              </span>
+              <span class="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-900/80 text-white">
+                📍 ${item.city}
+              </span>
+            </div>
+            <div class="p-3.5 space-y-1">
+              <span class="text-[10px] font-black text-brand-600 tracking-wider uppercase">${item.brand}</span>
+              <h5 class="text-xs font-bold text-slate-900 line-clamp-1">${item.title}</h5>
+              <div class="flex items-baseline gap-2 pt-1">
+                <span class="text-sm font-black text-slate-900">${item.price} TL</span>
+                <span class="text-[11px] text-slate-400 line-through">${item.origPrice} TL</span>
+                <span class="text-[10px] font-bold text-slate-500 ml-auto">${item.size}</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-3 pt-0 border-t border-slate-100 flex items-center justify-between gap-1.5 mt-2">
+            <button onclick="quickUpdateItemPrice(${item.id})" class="flex-1 py-1.5 rounded-xl bg-slate-50 hover:bg-rose-50 text-[11px] font-bold text-slate-700 hover:text-brand-600 transition border border-slate-200">
+              Fiyat Düzenle
+            </button>
+            <button onclick="markItemAsSold(${item.id})" class="px-2.5 py-1.5 rounded-xl bg-slate-50 hover:bg-emerald-50 text-[11px] font-bold text-slate-700 hover:text-emerald-700 transition border border-slate-200" title="Satıldı Olarak İşaretle">
+              ✓ Satıldı
+            </button>
+            <button onclick="deleteMyItem(${item.id})" class="px-2.5 py-1.5 rounded-xl bg-slate-50 hover:bg-rose-100 text-[11px] font-bold text-rose-600 transition border border-slate-200" title="İlanı Kaldır">
+              🗑️
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderProfileOrders() {
+      const container = document.getElementById('profileOrdersContainer');
+      if (!container) return;
+
+      container.innerHTML = `
+        <div class="p-4 rounded-2xl border border-slate-200 bg-white shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=120&q=80" class="w-14 h-14 rounded-xl object-cover shrink-0">
+            <div>
+              <span class="text-[10px] font-bold text-slate-400">Sipariş No: #IDL-8492</span>
+              <h5 class="text-xs font-black text-slate-900">Zara Saten Abiye Elbise (Zümrüt Yeşili)</h5>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-xs font-black text-brand-600">1.400 TL</span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-50 text-amber-700 border border-amber-200">
+                  🔒 Para Havuzda Bloke (Elden Teslim Bekleniyor)
+                </span>
+              </div>
+            </div>
+          </div>
+          <button onclick="alert('🌸 Ürünü satıcıdan teslim aldığınızı onayladınız. Bloke ödeme satıcı cüzdanına güvenle aktarıldı.')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs rounded-xl shadow transition shrink-0">
+            Teslim Aldım ve Onayla ✓
+          </button>
+        </div>
+
+        <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 shadow-xs flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=120&q=80" class="w-14 h-14 rounded-xl object-cover shrink-0 opacity-80">
+            <div>
+              <span class="text-[10px] font-bold text-slate-400">Sipariş No: #IDL-7119</span>
+              <h5 class="text-xs font-black text-slate-700">Bershka Keten Pantolon & Crop Ceket Takım</h5>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-xs font-bold text-slate-600">850 TL</span>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700">
+                  ✅ Teslim Alındı & Onaylandı
+                </span>
+              </div>
+            </div>
+          </div>
+          <span class="text-[11px] font-bold text-slate-400">Tamamlandı</span>
+        </div>
+      `;
+    }
+
+    function renderProfileWallet() {
+      if (!currentUser) return;
+      const ibanInput = document.getElementById('walletIbanInput');
+      if (ibanInput && currentUser.iban) ibanInput.value = currentUser.iban;
+    }
+
+    function requestBankWithdrawal() {
+      const iban = document.getElementById('walletIbanInput').value.trim();
+      if (!iban) {
+        alert('Lütfen geçerli bir KKTC Banka IBAN numarası giriniz.');
+        return;
+      }
+      if (!currentUser || (currentUser.wallet || 0) <= 0) {
+        alert('Çekilebilir cüzdan bakiyeniz 0 TL olduğu için transfer talebi oluşturulamadı.');
+        return;
+      }
+      currentUser.iban = iban;
+      localStorage.setItem('idilisko_active_user', JSON.stringify(currentUser));
+      alert(`✅ ${currentUser.wallet} TL transfer talebiniz alındı!\n\n${iban} numaralı hesabınıza 1 iş günü içinde Kıbrıs İktisat / Creditwest kanalıyla havale edilecektir.`);
+    }
+
+    function populateEditProfileForm() {
+      if (!currentUser) return;
+      document.getElementById('editFullName').value = currentUser.name || '';
+      document.getElementById('editUsername').value = currentUser.username || '';
+      document.getElementById('editPhone').value = currentUser.phone || '';
+      document.getElementById('editCity').value = currentUser.city || 'Girne';
+      document.getElementById('editCampus').value = currentUser.campus || 'GAÜ Kampüs';
+      document.getElementById('editBio').value = currentUser.bio || '';
+      document.getElementById('editAvatarUrl').value = currentUser.avatar || '';
+    }
+
+    async function handleProfileUpdate(e) {
+      e.preventDefault();
+      if (!currentUser) return;
+
+      const name = document.getElementById('editFullName').value.trim();
+      const username = document.getElementById('editUsername').value.trim().replace('@', '');
+      const phone = document.getElementById('editPhone').value.trim();
+      const city = document.getElementById('editCity').value;
+      const campus = document.getElementById('editCampus').value;
+      const bio = document.getElementById('editBio').value.trim();
+      const avatar = document.getElementById('editAvatarUrl').value.trim() || currentUser.avatar;
+
+      currentUser.name = name;
+      currentUser.username = username;
+      currentUser.phone = phone;
+      currentUser.city = city;
+      currentUser.campus = campus;
+      currentUser.bio = bio;
+      currentUser.avatar = avatar;
+
+      localStorage.setItem('idilisko_active_user', JSON.stringify(currentUser));
+
+      if (supabaseClient) {
+        try {
+          await supabaseClient.from('users').update({
+            full_name: name,
+            username,
+            city,
+            campus_name: campus,
+            bio,
+            avatar_url: avatar
+          }).eq('username', username);
+        } catch (err) {
+          console.warn('Supabase profile update:', err);
+        }
+      }
+
+      updateAuthHeader();
+      updateProfileModalUI();
+      switchProfileTab('items');
+      alert('🌸 Profil bilgileriniz ve dolap detaylarınız başarıyla güncellendi!');
+    }
+
+    function promptChangeAvatar() {
+      const url = prompt('Yeni Profil Fotoğrafı URL adresini giriniz:', (currentUser && currentUser.avatar) ? currentUser.avatar : '');
+      if (url && url.trim()) {
+        currentUser.avatar = url.trim();
+        localStorage.setItem('idilisko_active_user', JSON.stringify(currentUser));
+        updateAuthHeader();
+        updateProfileModalUI();
+        alert('📷 Profil fotoğrafınız güncellendi!');
+      }
+    }
+
+    function quickUpdateItemPrice(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      const newPrice = prompt(`"${p.title}" için yeni satış fiyatını giriniz (TL):`, p.price);
+      if (newPrice && !isNaN(Number(newPrice))) {
+        p.price = Number(newPrice);
+        const orig = initialProducts.find(x => x.id === id);
+        if (orig) orig.price = Number(newPrice);
+        renderProducts();
+        renderProfileWardrobe();
+        alert(`🏷️ Fiyat başarıyla ${newPrice} TL olarak güncellendi!`);
+      }
+    }
+
+    function markItemAsSold(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      if (confirm(`"${p.title}" ürününü satıldı olarak işaretlemek istiyor musunuz?`)) {
+        products = products.filter(x => x.id !== id);
+        initialProducts = initialProducts.filter(x => x.id !== id);
+        if (currentUser) {
+          currentUser.sales = (currentUser.sales || 0) + 1;
+          currentUser.wallet = (currentUser.wallet || 0) + p.price;
+          localStorage.setItem('idilisko_active_user', JSON.stringify(currentUser));
+          updateProfileModalUI();
+        }
+        renderProducts();
+        renderProfileWardrobe();
+        alert(`🎉 Harika! Ürün satıldı olarak işaretlendi ve ${p.price} TL İdilişko cüzdanınıza eklendi!`);
+      }
+    }
+
+    function deleteMyItem(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      if (confirm(`"${p.title}" ilanını dolabınızdan kaldırmak istediğinize emin misiniz?`)) {
+        products = products.filter(x => x.id !== id);
+        initialProducts = initialProducts.filter(x => x.id !== id);
+        renderProducts();
+        renderProfileWardrobe();
+        alert('🗑️ İlan dolabınızdan başarıyla kaldırıldı.');
+      }
+    }
+
+    function toggleMessagesDropdown() {
+      alert('💬 İdilişko Mesajlarınız:\n\n• Selin K. (DAÜ): "Zara elbise için 1.200 TL teklif verdi"\n• Derya B. (Dereboyu): "Ürünü onayladım çok teşekkürler 🥰"');
+    }
+
+    // Backdrop Click & ESC Key Closers
+    ['productDetailModal', 'offerModal', 'checkoutModal', 'addItemModal', 'profileModal', 'authModal'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('click', function(e) {
+          if (e.target === this) {
+            this.classList.add('hidden');
+            lockBodyScroll(false);
+          }
+        });
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        ['productDetailModal', 'offerModal', 'checkoutModal', 'addItemModal', 'profileModal', 'authModal'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.add('hidden');
+        });
+        lockBodyScroll(false);
+      }
+    });
+
+    // Supabase Canlı Veri Yükleyici
+    async function loadSupabaseProducts() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('products')
+          .select('*, product_images(*)');
+        if (data && data.length > 0) {
+          const cloudItems = data.map(item => {
+            const img = (item.product_images && item.product_images.length > 0)
+              ? item.product_images[0].image_url
+              : 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=80';
+            return {
+              id: item.id,
+              title: item.title,
+              brand: item.brand,
+              size: item.size,
+              price: Number(item.price),
+              origPrice: Number(item.original_price) || Math.round(Number(item.price) * 1.8),
+              city: item.city,
+              category: item.category_id === 1 ? 'Mezuniyet' : (item.category_id === 3 ? 'Çanta' : 'Giyim'),
+              condition: item.condition,
+              meetup: item.custom_meetup_note || `${item.city} Güvenli Buluşma Noktası`,
+              image: img,
+              seller: item.city === 'Girne' ? 'Melis T.' : (item.city === 'Mağusa' ? 'Selin K.' : 'Derya B.'),
+              sellerAvatar: item.city === 'Girne'
+                ? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80'
+                : 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80',
+              likes: item.likes_count || 14,
+              isLiked: false,
+              tags: [item.city, item.brand]
+            };
+          });
+
+          const cloudTitles = new Set(cloudItems.map(p => p.title.toLowerCase()));
+          const remainingInitial = initialProducts.filter(p => !cloudTitles.has(p.title.toLowerCase()));
+          products = [...cloudItems, ...remainingInitial];
+          renderProducts();
+        }
+      } catch (err) {
+        console.warn('Supabase fetch failed:', err);
+      }
+    }
+
+    // Initial render & Cloud sync & Auth UI
+    updateAuthHeader();
+    renderProducts();
+    loadSupabaseProducts();
+    setupOtpInputListeners();
+  </script>
+</body>
+</html>
